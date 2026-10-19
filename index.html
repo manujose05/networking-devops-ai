@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Networking + DevOps + AI — Learning Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
+      <div class="header-text">
+        <h1>Networking · DevOps · AI</h1>
+        <p class="subtitle">Personal Learning Tracker — built as you learn</p>
+      </div>
+      <div class="progress-ring-wrap">
+        <svg class="progress-ring" width="80" height="80">
+          <circle class="ring-bg" cx="40" cy="40" r="34"/>
+          <circle class="ring-fill" id="ring-fill" cx="40" cy="40" r="34"/>
+        </svg>
+        <span class="ring-label" id="ring-label">0%</span>
+      </div>
+    </div>
+    <div class="stats-bar">
+      <div class="stat"><span id="stat-done">0</span><small>Done</small></div>
+      <div class="stat"><span id="stat-total">0</span><small>Total</small></div>
+      <div class="stat"><span id="stat-phases">3</span><small>Phases</small></div>
+      <div class="stat"><span id="stat-weeks">12</span><small>Week Plan</small></div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ROADMAP TIMELINE -->
+    <section class="section">
+      <h2 class="section-title">Your 12-Week Roadmap</h2>
+      <div class="timeline">
+        <div class="tl-item" data-week="1">
+          <div class="tl-dot phase-1"></div>
+          <div class="tl-body">
+            <span class="tl-week">Weeks 1–2</span>
+            <span class="tl-topic">Networking Basics — OSI, IP, DNS, TCP/UDP</span>
+          </div>
+        </div>
+        <div class="tl-item" data-week="2">
+          <div class="tl-dot phase-1"></div>
+          <div class="tl-body">
+            <span class="tl-week">Weeks 3–4</span>
+            <span class="tl-topic">Cloud Networking — VPC, Subnets, Security Groups</span>
+          </div>
+        </div>
+        <div class="tl-item" data-week="3">
+          <div class="tl-dot phase-2"></div>
+          <div class="tl-body">
+            <span class="tl-week">Weeks 5–6</span>
+            <span class="tl-topic">DevOps Tools — Docker, Nginx, CI/CD</span>
+          </div>
+        </div>
+        <div class="tl-item" data-week="4">
+          <div class="tl-dot phase-2"></div>
+          <div class="tl-body">
+            <span class="tl-week">Weeks 7–8</span>
+            <span class="tl-topic">Kubernetes Networking — Pods, Services, Ingress</span>
+          </div>
+        </div>
+        <div class="tl-item" data-week="5">
+          <div class="tl-dot phase-2"></div>
+          <div class="tl-body">
+            <span class="tl-week">Weeks 9–10</span>
+            <span class="tl-topic">Monitoring — Prometheus, Grafana, Observability</span>
+          </div>
+        </div>
+        <div class="tl-item" data-week="6">
+          <div class="tl-dot phase-3"></div>
+          <div class="tl-body">
+            <span class="tl-week">Weeks 11–12</span>
+            <span class="tl-topic">AI + DevOps — AIOps, Security AI, LLM Integration</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 1: NETWORKING -->
+    <section class="section phase-section" id="phase-1">
+      <div class="phase-header phase-1-header">
+        <span class="phase-badge">Phase 1</span>
+        <h2>Networking Fundamentals</h2>
+        <div class="phase-progress-wrap">
+          <div class="phase-progress-bar" id="prog-1"></div>
+        </div>
+        <span class="phase-pct" id="pct-1">0%</span>
+      </div>
+
+      <div class="cards-grid">
+
+        <div class="card" id="topic-osi">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="1" data-topic="osi"/>
+              <span class="checkmark"></span>
+              <span class="card-title">OSI Model</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <p>7-layer model that describes how data travels across a network.</p>
+            <table class="mini-table">
+              <tr><th>Layer</th><th>Name</th><th>Example</th></tr>
+              <tr><td>7</td><td>Application</td><td>HTTP, DNS, FTP</td></tr>
+              <tr><td>6</td><td>Presentation</td><td>TLS/SSL, JPEG</td></tr>
+              <tr><td>5</td><td>Session</td><td>Login sessions</td></tr>
+              <tr><td>4</td><td>Transport</td><td>TCP, UDP</td></tr>
+              <tr><td>3</td><td>Network</td><td>IP addresses</td></tr>
+              <tr><td>2</td><td>Data Link</td><td>MAC addresses</td></tr>
+              <tr><td>1</td><td>Physical</td><td>Ethernet, WiFi</td></tr>
+            </table>
+            <div class="tip">Focus first on layers 3, 4, and 7 — you'll use them the most.</div>
+          </div>
+        </div>
+
+        <div class="card" id="topic-ip">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="1" data-topic="ip"/>
+              <span class="checkmark"></span>
+              <span class="card-title">IP Addresses &amp; Subnets</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <p>Every device needs an IP address — like a home address for data packets.</p>
+            <ul>
+              <li><strong>Private:</strong> <code>192.168.x.x</code> — inside your home/office</li>
+              <li><strong>Public:</strong> <code>8.8.8.8</code> — visible on the internet</li>
+              <li><strong>IPv4:</strong> 32-bit, ~4 billion addresses</li>
+              <li><strong>IPv6:</strong> 128-bit, practically unlimited</li>
+            </ul>
+            <p><strong>Subnets:</strong> <code>192.168.1.0/24</code> — /24 means 254 usable hosts. /16 = 65,534 hosts.</p>
+            <div class="tip">CIDR notation: the number after / tells you how many bits are the "network" part.</div>
+          </div>
+        </div>
+
+        <div class="card" id="topic-dns">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="1" data-topic="dns"/>
+              <span class="checkmark"></span>
+              <span class="card-title">DNS — Domain Name System</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <p>DNS translates human-readable names into IP addresses.</p>
+            <ul>
+              <li><strong>A record:</strong> <code>google.com</code> → <code>142.250.80.46</code></li>
+              <li><strong>CNAME:</strong> <code>www.google.com</code> → <code>google.com</code></li>
+              <li><strong>MX record:</strong> Mail server for a domain</li>
+            </ul>
+            <pre><code>dig google.com
+nslookup google.com</code></pre>
+          </div>
+        </div>
+
+        <div class="card" id="topic-tcp">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="1" data-topic="tcp"/>
+              <span class="checkmark"></span>
+              <span class="card-title">TCP vs UDP &amp; Ports</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <table class="mini-table">
+              <tr><th>TCP</th><th>UDP</th></tr>
+              <tr><td>Reliable, ordered</td><td>Fast, no guarantee</td></tr>
+              <tr><td>File download, web</td><td>Video streaming, gaming</td></tr>
+              <tr><td>Slower</td><td>Faster</td></tr>
+            </table>
+            <p><strong>Common ports:</strong></p>
+            <ul>
+              <li>22 = SSH</li>
+              <li>80 = HTTP</li>
+              <li>443 = HTTPS</li>
+              <li>3306 = MySQL</li>
+              <li>5432 = PostgreSQL</li>
+              <li>6379 = Redis</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" id="topic-linux-net">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="1" data-topic="linux-net"/>
+              <span class="checkmark"></span>
+              <span class="card-title">Linux Networking Commands</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <pre><code># Check your IP address
+ip addr show
+
+# Test connectivity
+ping 8.8.8.8
+
+# Trace packet route
+traceroute google.com
+
+# DNS lookup
+dig google.com
+nslookup google.com
+
+# Check open ports
+ss -tulpn
+
+# View connections
+ss -s
+
+# Firewall status
+ufw status
+iptables -L</code></pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PHASE 2: DEVOPS -->
+    <section class="section phase-section" id="phase-2">
+      <div class="phase-header phase-2-header">
+        <span class="phase-badge">Phase 2</span>
+        <h2>DevOps &amp; Cloud Networking</h2>
+        <div class="phase-progress-wrap">
+          <div class="phase-progress-bar" id="prog-2"></div>
+        </div>
+        <span class="phase-pct" id="pct-2">0%</span>
+      </div>
+
+      <div class="cards-grid">
+
+        <div class="card" id="topic-pipeline">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="2" data-topic="pipeline"/>
+              <span class="checkmark"></span>
+              <span class="card-title">DevOps Pipeline</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <p>The journey from code to production:</p>
+            <pre><code>Developer writes code
+      ↓
+Git commit + push
+      ↓
+CI/CD Pipeline (build + test)  ← GitHub Actions, Jenkins
+      ↓
+Docker container built
+      ↓
+Deployed to Cloud (AWS/Azure/GCP)
+      ↓
+Load Balancer distributes traffic
+      ↓
+Users access via DNS</code></pre>
+          </div>
+        </div>
+
+        <div class="card" id="topic-lb">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="2" data-topic="lb"/>
+              <span class="checkmark"></span>
+              <span class="card-title">Load Balancing</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <p>Spreads incoming traffic across multiple servers so no single server is overwhelmed.</p>
+            <pre><code>              ┌── Server 1
+Internet → LB ├── Server 2
+              └── Server 3</code></pre>
+            <ul>
+              <li><strong>Round-robin:</strong> Rotate through servers evenly</li>
+              <li><strong>Least connections:</strong> Send to least busy server</li>
+              <li><strong>IP hash:</strong> Same user always hits same server</li>
+            </ul>
+            <p><strong>Tools:</strong> Nginx, HAProxy, AWS ELB, Cloudflare</p>
+          </div>
+        </div>
+
+        <div class="card" id="topic-vpc">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="2" data-topic="vpc"/>
+              <span class="checkmark"></span>
+              <span class="card-title">VPC &amp; Cloud Networking</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <p><strong>VPC (Virtual Private Cloud)</strong> is your own isolated network inside AWS/Azure/GCP.</p>
+            <ul>
+              <li><strong>Public subnet:</strong> Has internet access — put load balancers here</li>
+              <li><strong>Private subnet:</strong> No direct internet — put databases and app servers here</li>
+              <li><strong>Security Groups:</strong> Virtual firewall for EC2 instances</li>
+              <li><strong>NACLs:</strong> Subnet-level firewall rules</li>
+            </ul>
+            <div class="tip">Golden rule: databases should NEVER be in a public subnet.</div>
+          </div>
+        </div>
+
+        <div class="card" id="topic-docker">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="2" data-topic="docker"/>
+              <span class="checkmark"></span>
+              <span class="card-title">Docker Networking</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <p>Docker creates virtual networks so containers can talk to each other.</p>
+            <pre><code># List networks
+docker network ls
+
+# Create a network
+docker network create my-app-network
+
+# Run containers on same network
+docker run --network my-app-network --name db postgres
+docker run --network my-app-network --name app myapp
+# 'app' can reach 'db' by hostname 'db'</code></pre>
+          </div>
+        </div>
+
+        <div class="card" id="topic-k8s">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="2" data-topic="k8s"/>
+              <span class="checkmark"></span>
+              <span class="card-title">Kubernetes Networking</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <ul>
+              <li><strong>Pod:</strong> Smallest unit — gets its own IP</li>
+              <li><strong>Service:</strong> Stable DNS name + IP in front of pods</li>
+              <li><strong>Ingress:</strong> Routes external HTTP(S) to services — like a smart load balancer</li>
+              <li><strong>CNI:</strong> Plugin that handles pod-to-pod networking (Calico, Flannel, Cilium)</li>
+            </ul>
+            <pre><code># Expose a deployment as a service
+kubectl expose deployment myapp --port=80 --type=LoadBalancer
+
+# Check services
+kubectl get services
+kubectl get ingress</code></pre>
+          </div>
+        </div>
+
+        <div class="card" id="topic-monitoring">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="2" data-topic="monitoring"/>
+              <span class="checkmark"></span>
+              <span class="card-title">Monitoring &amp; Observability</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <p>The three pillars of observability:</p>
+            <ul>
+              <li><strong>Metrics:</strong> Numbers over time — CPU, memory, request rate (Prometheus)</li>
+              <li><strong>Logs:</strong> Text records of events (ELK Stack, Loki)</li>
+              <li><strong>Traces:</strong> Track a request across microservices (Jaeger, Zipkin)</li>
+            </ul>
+            <p><strong>Stack:</strong> Prometheus (collect) → Grafana (visualize) → Alertmanager (alert)</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PHASE 3: AI -->
+    <section class="section phase-section" id="phase-3">
+      <div class="phase-header phase-3-header">
+        <span class="phase-badge">Phase 3</span>
+        <h2>AI Use Cases in Networking &amp; DevOps</h2>
+        <div class="phase-progress-wrap">
+          <div class="phase-progress-bar" id="prog-3"></div>
+        </div>
+        <span class="phase-pct" id="pct-3">0%</span>
+      </div>
+
+      <div class="cards-grid">
+
+        <div class="card" id="topic-aiops">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="3" data-topic="aiops"/>
+              <span class="checkmark"></span>
+              <span class="card-title">AIOps — AI for IT Operations</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <p>AI monitors your infra and detects problems before users notice.</p>
+            <ul>
+              <li><strong>Anomaly Detection:</strong> AI learns normal traffic — alerts on deviations</li>
+              <li><strong>Predictive Failure:</strong> Predicts disk failure 48 hours in advance</li>
+              <li><strong>Root Cause Analysis:</strong> Finds which of 100 microservices caused the slowdown</li>
+            </ul>
+            <p><strong>Tools:</strong> Dynatrace, Datadog, Splunk, New Relic</p>
+          </div>
+        </div>
+
+        <div class="card" id="topic-ai-security">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="3" data-topic="ai-security"/>
+              <span class="checkmark"></span>
+              <span class="card-title">AI-Driven Network Security</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <pre><code>Normal:    Login from NY, 9am, downloads 50MB
+Anomaly:   Login from unknown country, 2am, downloads 50GB
+           → AI flags + blocks automatically</code></pre>
+            <ul>
+              <li><strong>IDS/IPS:</strong> Intrusion Detection/Prevention using AI models</li>
+              <li><strong>DDoS Detection:</strong> Distinguish real traffic from attack floods</li>
+              <li><strong>UEBA:</strong> User behavior analytics — catches insider threats</li>
+            </ul>
+            <p><strong>Tools:</strong> CrowdStrike, Darktrace, AWS GuardDuty, Palo Alto Cortex</p>
+          </div>
+        </div>
+
+        <div class="card" id="topic-netdevops">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="3" data-topic="netdevops"/>
+              <span class="checkmark"></span>
+              <span class="card-title">AI for Network Configuration</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <p>Replacing manual CLI-typing with AI-driven config management.</p>
+            <ul>
+              <li><strong>NL to Config:</strong> "Block all traffic from X" → AI generates firewall rules</li>
+              <li><strong>Drift Detection:</strong> Compares actual vs intended config, flags differences</li>
+              <li><strong>Auto-remediation:</strong> Detects and fixes misconfigs without humans</li>
+            </ul>
+            <p><strong>Tools:</strong> Cisco DNA Center, Juniper Apstra, Ansible + LLM</p>
+          </div>
+        </div>
+
+        <div class="card" id="topic-sdwan">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="3" data-topic="sdwan"/>
+              <span class="checkmark"></span>
+              <span class="card-title">Intelligent Traffic &amp; SD-WAN</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <ul>
+              <li><strong>SD-WAN:</strong> AI routes traffic on the best path in real time</li>
+              <li><strong>QoS:</strong> AI prioritizes video calls over file downloads automatically</li>
+              <li><strong>CDN optimization:</strong> AI predicts what content to cache where</li>
+            </ul>
+            <p><strong>Tools:</strong> Cloudflare, Fastly, AWS Global Accelerator</p>
+          </div>
+        </div>
+
+        <div class="card" id="topic-chatops">
+          <div class="card-header">
+            <label class="check-label">
+              <input type="checkbox" class="topic-check" data-phase="3" data-topic="chatops"/>
+              <span class="checkmark"></span>
+              <span class="card-title">ChatOps &amp; LLM Integration</span>
+            </label>
+            <button class="expand-btn" aria-label="expand">▼</button>
+          </div>
+          <div class="card-body hidden">
+            <pre><code>Engineer → Slack: "Why is prod slow?"
+LLM Bot  → queries Datadog + K8s + logs
+LLM Bot  → "Pod myapp-3 has OOMKilled 5x.
+            Memory limit 512MB but using 800MB.
+            Recommend increasing limit."</code></pre>
+            <ul>
+              <li>LLM reads runbooks → auto-responds to alerts</li>
+              <li>AI generates Terraform/K8s YAML from natural language</li>
+              <li>AI-assisted incident postmortems</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section class="section" id="resources">
+      <h2 class="section-title">Free Resources</h2>
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-icon">📡</div>
+          <div class="resource-body">
+            <strong>Networking</strong>
+            <p>Professor Messer's CompTIA Network+ — YouTube, free</p>
+          </div>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">🐧</div>
+          <div class="resource-body">
+            <strong>Linux Networking</strong>
+            <p><code>man ip</code>, <code>man ss</code> in your terminal</p>
+          </div>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">🐳</div>
+          <div class="resource-body">
+            <strong>Docker</strong>
+            <p>docs.docker.com — official tutorial, free</p>
+          </div>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">☸️</div>
+          <div class="resource-body">
+            <strong>Kubernetes</strong>
+            <p>killer.sh free scenarios, KillerCoda (browser-based)</p>
+          </div>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">☁️</div>
+          <div class="resource-body">
+            <strong>Cloud Networking</strong>
+            <p>AWS free tier + official docs (12 months free)</p>
+          </div>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">🤖</div>
+          <div class="resource-body">
+            <strong>AI + DevOps</strong>
+            <p>Datadog free trial, Grafana Cloud free tier</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Last updated: <span id="last-updated">—</span> &nbsp;|&nbsp; Progress saved in your browser</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
