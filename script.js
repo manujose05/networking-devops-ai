@@ -103,8 +103,8 @@ function initCards() {
   const buttons = document.querySelectorAll('.expand-btn');
 
   buttons.forEach(btn => {
-    const card = btn.closest('.card');
-    const body = card.querySelector('.card-body');
+    const card = btn.closest('.lesson');
+    const body = card.querySelector('.lesson-body');
 
     btn.addEventListener('click', () => {
       const isOpen = card.classList.contains('open');
@@ -117,8 +117,8 @@ function initCards() {
       }
     });
 
-    // Also expand on card header click (not on the checkbox area)
-    const header = card.querySelector('.card-header');
+    // Also expand on lesson header click (not on the checkbox area)
+    const header = card.querySelector('.lesson-header');
     header.addEventListener('click', e => {
       if (e.target.closest('.check-label')) return;
       btn.click();
