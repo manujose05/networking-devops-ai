@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Networking + DevOps + AI — Learning Tracker</title>
+  <title>Networking + DevOps + AI — Study Guide</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,7 +13,7 @@
     <div class="header-inner">
       <div class="header-text">
         <h1>Networking · DevOps · AI</h1>
-        <p class="subtitle">Personal Learning Tracker — built as you learn</p>
+        <p class="subtitle">Complete Beginner Study Guide — track progress as you learn</p>
       </div>
       <div class="progress-ring-wrap">
         <svg class="progress-ring" width="80" height="80">
@@ -25,7 +25,7 @@
     </div>
     <div class="stats-bar">
       <div class="stat"><span id="stat-done">0</span><small>Done</small></div>
-      <div class="stat"><span id="stat-total">0</span><small>Total</small></div>
+      <div class="stat"><span id="stat-total">0</span><small>Topics</small></div>
       <div class="stat"><span id="stat-phases">3</span><small>Phases</small></div>
       <div class="stat"><span id="stat-weeks">12</span><small>Week Plan</small></div>
     </div>
@@ -37,527 +37,1230 @@
     <section class="section">
       <h2 class="section-title">Your 12-Week Roadmap</h2>
       <div class="timeline">
-        <div class="tl-item" data-week="1">
-          <div class="tl-dot phase-1"></div>
-          <div class="tl-body">
-            <span class="tl-week">Weeks 1–2</span>
-            <span class="tl-topic">Networking Basics — OSI, IP, DNS, TCP/UDP</span>
-          </div>
-        </div>
-        <div class="tl-item" data-week="2">
-          <div class="tl-dot phase-1"></div>
-          <div class="tl-body">
-            <span class="tl-week">Weeks 3–4</span>
-            <span class="tl-topic">Cloud Networking — VPC, Subnets, Security Groups</span>
-          </div>
-        </div>
-        <div class="tl-item" data-week="3">
-          <div class="tl-dot phase-2"></div>
-          <div class="tl-body">
-            <span class="tl-week">Weeks 5–6</span>
-            <span class="tl-topic">DevOps Tools — Docker, Nginx, CI/CD</span>
-          </div>
-        </div>
-        <div class="tl-item" data-week="4">
-          <div class="tl-dot phase-2"></div>
-          <div class="tl-body">
-            <span class="tl-week">Weeks 7–8</span>
-            <span class="tl-topic">Kubernetes Networking — Pods, Services, Ingress</span>
-          </div>
-        </div>
-        <div class="tl-item" data-week="5">
-          <div class="tl-dot phase-2"></div>
-          <div class="tl-body">
-            <span class="tl-week">Weeks 9–10</span>
-            <span class="tl-topic">Monitoring — Prometheus, Grafana, Observability</span>
-          </div>
-        </div>
-        <div class="tl-item" data-week="6">
-          <div class="tl-dot phase-3"></div>
-          <div class="tl-body">
-            <span class="tl-week">Weeks 11–12</span>
-            <span class="tl-topic">AI + DevOps — AIOps, Security AI, LLM Integration</span>
-          </div>
-        </div>
+        <div class="tl-item"><div class="tl-dot phase-1"></div><div class="tl-body"><span class="tl-week">Weeks 1–2</span><span class="tl-topic">Networking Basics — OSI, IP, DNS, TCP/UDP</span></div></div>
+        <div class="tl-item"><div class="tl-dot phase-1"></div><div class="tl-body"><span class="tl-week">Weeks 3–4</span><span class="tl-topic">Cloud Networking — VPC, Subnets, Security Groups</span></div></div>
+        <div class="tl-item"><div class="tl-dot phase-2"></div><div class="tl-body"><span class="tl-week">Weeks 5–6</span><span class="tl-topic">DevOps Tools — Docker, Nginx, CI/CD</span></div></div>
+        <div class="tl-item"><div class="tl-dot phase-2"></div><div class="tl-body"><span class="tl-week">Weeks 7–8</span><span class="tl-topic">Kubernetes Networking — Pods, Services, Ingress</span></div></div>
+        <div class="tl-item"><div class="tl-dot phase-2"></div><div class="tl-body"><span class="tl-week">Weeks 9–10</span><span class="tl-topic">Monitoring — Prometheus, Grafana, Observability</span></div></div>
+        <div class="tl-item"><div class="tl-dot phase-3"></div><div class="tl-body"><span class="tl-week">Weeks 11–12</span><span class="tl-topic">AI + DevOps — AIOps, Security AI, LLM Integration</span></div></div>
       </div>
     </section>
 
-    <!-- PHASE 1: NETWORKING -->
+    <!-- ═══════════════════════════════════════════════
+         PHASE 1: NETWORKING FUNDAMENTALS
+    ═══════════════════════════════════════════════ -->
     <section class="section phase-section" id="phase-1">
       <div class="phase-header phase-1-header">
         <span class="phase-badge">Phase 1</span>
         <h2>Networking Fundamentals</h2>
-        <div class="phase-progress-wrap">
-          <div class="phase-progress-bar" id="prog-1"></div>
-        </div>
+        <div class="phase-progress-wrap"><div class="phase-progress-bar" id="prog-1"></div></div>
         <span class="phase-pct" id="pct-1">0%</span>
       </div>
 
-      <div class="cards-grid">
+      <div class="lessons">
 
-        <div class="card" id="topic-osi">
-          <div class="card-header">
+        <!-- LESSON: OSI MODEL -->
+        <div class="lesson" id="topic-osi">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="1" data-topic="osi"/>
               <span class="checkmark"></span>
-              <span class="card-title">OSI Model</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">The OSI Model</span>
+                <span class="lesson-desc">How data travels across any network — the universal blueprint</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <p>7-layer model that describes how data travels across a network.</p>
-            <table class="mini-table">
-              <tr><th>Layer</th><th>Name</th><th>Example</th></tr>
-              <tr><td>7</td><td>Application</td><td>HTTP, DNS, FTP</td></tr>
-              <tr><td>6</td><td>Presentation</td><td>TLS/SSL, JPEG</td></tr>
-              <tr><td>5</td><td>Session</td><td>Login sessions</td></tr>
-              <tr><td>4</td><td>Transport</td><td>TCP, UDP</td></tr>
-              <tr><td>3</td><td>Network</td><td>IP addresses</td></tr>
-              <tr><td>2</td><td>Data Link</td><td>MAC addresses</td></tr>
-              <tr><td>1</td><td>Physical</td><td>Ethernet, WiFi</td></tr>
-            </table>
-            <div class="tip">Focus first on layers 3, 4, and 7 — you'll use them the most.</div>
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>What is it?</h3>
+              <p>The OSI (Open Systems Interconnection) model breaks down how computers communicate into <strong>7 layers</strong>. Think of it like sending a physical letter — you write the content, put it in an envelope, write the address, hand it to a postman, it goes on a truck, then a plane, arrives at a local post office, and finally gets delivered. Each step is a "layer."</p>
+              <p>Every time you visit a website, your data travels down all 7 layers on your computer, across the network, and back up all 7 layers on the server.</p>
+            </div>
+
+            <div class="lesson-block">
+              <h3>The 7 Layers (memorize this table)</h3>
+              <table class="study-table">
+                <thead><tr><th>#</th><th>Name</th><th>What it does</th><th>Real example</th><th>You care about?</th></tr></thead>
+                <tbody>
+                  <tr><td>7</td><td>Application</td><td>What apps use to communicate</td><td>HTTP, DNS, FTP, SMTP</td><td class="yes">YES</td></tr>
+                  <tr><td>6</td><td>Presentation</td><td>Encryption &amp; data formatting</td><td>TLS/SSL, JPEG, MP4</td><td class="maybe">Sometimes</td></tr>
+                  <tr><td>5</td><td>Session</td><td>Manages open connections</td><td>Login sessions, NetBIOS</td><td class="maybe">Sometimes</td></tr>
+                  <tr><td>4</td><td>Transport</td><td>Reliable delivery, ports</td><td>TCP, UDP</td><td class="yes">YES</td></tr>
+                  <tr><td>3</td><td>Network</td><td>Routing between networks</td><td>IP addresses, routers</td><td class="yes">YES</td></tr>
+                  <tr><td>2</td><td>Data Link</td><td>Local delivery on same network</td><td>MAC addresses, switches</td><td class="no">Less often</td></tr>
+                  <tr><td>1</td><td>Physical</td><td>Actual hardware &amp; signals</td><td>Ethernet cable, WiFi radio</td><td class="no">Less often</td></tr>
+                </tbody>
+              </table>
+              <div class="tip">As a DevOps/cloud engineer, you'll mostly work with <strong>Layer 3 (IP)</strong>, <strong>Layer 4 (TCP/UDP/ports)</strong>, and <strong>Layer 7 (HTTP, DNS)</strong>. Focus there first.</div>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Memory trick</h3>
+              <p>To remember the layers from 7 down to 1: <strong>"All People Seem To Need Data Processing"</strong></p>
+              <p>Application → Presentation → Session → Transport → Network → Data Link → Physical</p>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Real-world example: You type google.com</h3>
+              <div class="flow">
+                <div class="flow-step">Layer 7 — Your browser creates an HTTP request: "GET / HTTP/1.1"</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Layer 6 — TLS encrypts the data (HTTPS)</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Layer 4 — TCP adds port numbers (your port → port 443)</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Layer 3 — IP adds source + destination IP addresses</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Layer 2 — MAC address added for local network hop</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Layer 1 — Electrical signals sent over the cable or WiFi</div>
+              </div>
+            </div>
+
+            <div class="lesson-block exercise">
+              <h3>Practice exercise</h3>
+              <ol>
+                <li>Open your browser and visit any website over HTTPS.</li>
+                <li>Right-click → Inspect → Network tab.</li>
+                <li>Click on any request. You can see Layer 7 (HTTP headers), Layer 4 (protocol: TCP), and Layer 3 (Remote Address = IP).</li>
+                <li>Try to identify what layer each piece of information belongs to.</li>
+              </ol>
+            </div>
+
           </div>
         </div>
 
-        <div class="card" id="topic-ip">
-          <div class="card-header">
+        <!-- LESSON: IP ADDRESSES -->
+        <div class="lesson" id="topic-ip">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="1" data-topic="ip"/>
               <span class="checkmark"></span>
-              <span class="card-title">IP Addresses &amp; Subnets</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">IP Addresses &amp; Subnets</span>
+                <span class="lesson-desc">How every device on a network gets a unique address</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <p>Every device needs an IP address — like a home address for data packets.</p>
-            <ul>
-              <li><strong>Private:</strong> <code>192.168.x.x</code> — inside your home/office</li>
-              <li><strong>Public:</strong> <code>8.8.8.8</code> — visible on the internet</li>
-              <li><strong>IPv4:</strong> 32-bit, ~4 billion addresses</li>
-              <li><strong>IPv6:</strong> 128-bit, practically unlimited</li>
-            </ul>
-            <p><strong>Subnets:</strong> <code>192.168.1.0/24</code> — /24 means 254 usable hosts. /16 = 65,534 hosts.</p>
-            <div class="tip">CIDR notation: the number after / tells you how many bits are the "network" part.</div>
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>What is an IP address?</h3>
+              <p>An IP address is like a <strong>postal address for your computer</strong>. Without it, data packets wouldn't know where to go. Every device on a network — your laptop, phone, a server in AWS — has an IP address.</p>
+              <p>There are two versions:</p>
+              <ul>
+                <li><strong>IPv4:</strong> <code>192.168.1.100</code> — 4 groups of numbers (0–255), written with dots. Only ~4 billion possible addresses. We're running out.</li>
+                <li><strong>IPv6:</strong> <code>2001:0db8:85a3::8a2e:0370:7334</code> — 8 groups of hex digits. 340 undecillion addresses. Practically unlimited.</li>
+              </ul>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Private vs Public IP</h3>
+              <table class="study-table">
+                <thead><tr><th>Type</th><th>Range</th><th>Where used</th><th>Example</th></tr></thead>
+                <tbody>
+                  <tr><td>Private</td><td>10.0.0.0/8</td><td>Large corporate networks</td><td>10.0.0.5</td></tr>
+                  <tr><td>Private</td><td>172.16.0.0/12</td><td>Medium networks</td><td>172.16.5.3</td></tr>
+                  <tr><td>Private</td><td>192.168.0.0/16</td><td>Home / small office</td><td>192.168.1.100</td></tr>
+                  <tr><td>Public</td><td>Everything else</td><td>The internet</td><td>8.8.8.8</td></tr>
+                </tbody>
+              </table>
+              <div class="tip">Your home router has ONE public IP (given by your ISP). Every device in your house gets a private IP. The router translates between them — this is called <strong>NAT (Network Address Translation)</strong>.</div>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Subnets and CIDR notation</h3>
+              <p>A subnet divides a large network into smaller, manageable chunks. The <strong>CIDR notation</strong> (the /number) tells you how many bits are the "network" part vs the "host" part.</p>
+              <p><code>192.168.1.0/24</code> means:</p>
+              <ul>
+                <li>First 24 bits = network address (192.168.1)</li>
+                <li>Last 8 bits = host addresses (.0 to .255)</li>
+                <li>That's 256 total addresses, <strong>254 usable</strong> (first and last reserved)</li>
+              </ul>
+              <table class="study-table">
+                <thead><tr><th>CIDR</th><th>Usable hosts</th><th>Common use</th></tr></thead>
+                <tbody>
+                  <tr><td>/32</td><td>1</td><td>Single host (firewall rules)</td></tr>
+                  <tr><td>/24</td><td>254</td><td>Small office, cloud subnet</td></tr>
+                  <tr><td>/16</td><td>65,534</td><td>Large VPC in cloud</td></tr>
+                  <tr><td>/8</td><td>16,777,214</td><td>Enterprise networks</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Linux commands to check IPs</h3>
+              <pre><code># See your machine's IP addresses
+ip addr show
+
+# Short version — just IPs
+ip addr show | grep "inet "
+
+# Older command (still works)
+ifconfig
+
+# Check your public IP (uses an external service)
+curl ifconfig.me</code></pre>
+            </div>
+
+            <div class="lesson-block exercise">
+              <h3>Practice exercise</h3>
+              <ol>
+                <li>Open a terminal on your Linux machine and run <code>ip addr show</code>.</li>
+                <li>Find your private IP — it likely starts with 192.168 or 10.</li>
+                <li>Run <code>curl ifconfig.me</code> — this is your public IP (your router's IP).</li>
+                <li>Notice they are different. That difference is NAT in action.</li>
+              </ol>
+            </div>
+
           </div>
         </div>
 
-        <div class="card" id="topic-dns">
-          <div class="card-header">
+        <!-- LESSON: DNS -->
+        <div class="lesson" id="topic-dns">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="1" data-topic="dns"/>
               <span class="checkmark"></span>
-              <span class="card-title">DNS — Domain Name System</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">DNS — Domain Name System</span>
+                <span class="lesson-desc">The internet's phonebook — turns names into IP addresses</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <p>DNS translates human-readable names into IP addresses.</p>
-            <ul>
-              <li><strong>A record:</strong> <code>google.com</code> → <code>142.250.80.46</code></li>
-              <li><strong>CNAME:</strong> <code>www.google.com</code> → <code>google.com</code></li>
-              <li><strong>MX record:</strong> Mail server for a domain</li>
-            </ul>
-            <pre><code>dig google.com
-nslookup google.com</code></pre>
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>What is DNS?</h3>
+              <p>Computers communicate using IP addresses like <code>142.250.80.46</code>. But humans remember names like <code>google.com</code>. DNS is the system that translates between them — it's essentially the <strong>phonebook of the internet</strong>.</p>
+              <p>When you type <code>google.com</code> in your browser:</p>
+              <div class="flow">
+                <div class="flow-step">1. Your browser checks its local cache — "Do I already know this IP?"</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">2. Asks your OS (which checks /etc/hosts on Linux)</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">3. Asks your configured DNS server (e.g. 8.8.8.8 = Google DNS)</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">4. DNS server responds: "google.com = 142.250.80.46"</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">5. Browser connects to 142.250.80.46 on port 443</div>
+              </div>
+            </div>
+
+            <div class="lesson-block">
+              <h3>DNS Record Types</h3>
+              <table class="study-table">
+                <thead><tr><th>Record</th><th>What it does</th><th>Example</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>A</strong></td><td>Domain → IPv4 address</td><td>google.com → 142.250.80.46</td></tr>
+                  <tr><td><strong>AAAA</strong></td><td>Domain → IPv6 address</td><td>google.com → 2607:f8b0::200e</td></tr>
+                  <tr><td><strong>CNAME</strong></td><td>Alias — one domain to another</td><td>www.google.com → google.com</td></tr>
+                  <tr><td><strong>MX</strong></td><td>Mail server for a domain</td><td>google.com → smtp.google.com</td></tr>
+                  <tr><td><strong>TXT</strong></td><td>Text data (verification, SPF)</td><td>Used by Google/AWS to verify ownership</td></tr>
+                  <tr><td><strong>NS</strong></td><td>Name servers for a domain</td><td>Points to the DNS authority</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Linux DNS commands</h3>
+              <pre><code># Look up any domain
+dig google.com
+
+# Get just the A record (IP)
+dig google.com A +short
+
+# Look up mail records
+dig google.com MX
+
+# Reverse lookup — IP to domain
+dig -x 8.8.8.8
+
+# Simpler DNS lookup tool
+nslookup google.com
+
+# Which DNS server is your machine using?
+cat /etc/resolv.conf
+
+# The hosts file — manual overrides (checked BEFORE DNS)
+cat /etc/hosts</code></pre>
+              <div class="tip">In DevOps you'll use DNS constantly — to point your domain to a load balancer, to set up mail, to verify SSL certificates. Learn <code>dig</code> well.</div>
+            </div>
+
+            <div class="lesson-block">
+              <h3>DNS in cloud (AWS Route 53 example)</h3>
+              <p>When you deploy an app to the cloud:</p>
+              <ul>
+                <li>Your app runs on a server with IP <code>54.100.200.50</code></li>
+                <li>You create an <strong>A record</strong> in Route 53: <code>myapp.com → 54.100.200.50</code></li>
+                <li>Users type <code>myapp.com</code>, DNS resolves it to your server IP</li>
+                <li>When you scale to 3 servers, you put a <strong>load balancer</strong> in front and point DNS to the LB instead</li>
+              </ul>
+            </div>
+
+            <div class="lesson-block exercise">
+              <h3>Practice exercise</h3>
+              <ol>
+                <li>Run <code>dig google.com</code> — find the IP address in the ANSWER SECTION.</li>
+                <li>Run <code>dig google.com MX</code> — find Google's mail servers.</li>
+                <li>Run <code>dig github.com +short</code> — get just the IP, no clutter.</li>
+                <li>Open <code>/etc/hosts</code> — you'll see <code>127.0.0.1 localhost</code>. This is why typing "localhost" works.</li>
+              </ol>
+            </div>
+
           </div>
         </div>
 
-        <div class="card" id="topic-tcp">
-          <div class="card-header">
+        <!-- LESSON: TCP/UDP/PORTS -->
+        <div class="lesson" id="topic-tcp">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="1" data-topic="tcp"/>
               <span class="checkmark"></span>
-              <span class="card-title">TCP vs UDP &amp; Ports</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">TCP, UDP &amp; Ports</span>
+                <span class="lesson-desc">How data is delivered reliably — and which "door" it knocks on</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <table class="mini-table">
-              <tr><th>TCP</th><th>UDP</th></tr>
-              <tr><td>Reliable, ordered</td><td>Fast, no guarantee</td></tr>
-              <tr><td>File download, web</td><td>Video streaming, gaming</td></tr>
-              <tr><td>Slower</td><td>Faster</td></tr>
-            </table>
-            <p><strong>Common ports:</strong></p>
-            <ul>
-              <li>22 = SSH</li>
-              <li>80 = HTTP</li>
-              <li>443 = HTTPS</li>
-              <li>3306 = MySQL</li>
-              <li>5432 = PostgreSQL</li>
-              <li>6379 = Redis</li>
-            </ul>
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>TCP — Transmission Control Protocol</h3>
+              <p>TCP is like sending a <strong>registered letter with a tracking number</strong>. The receiver must sign for it. If it gets lost, it's re-sent. This makes it <strong>reliable but slower</strong>.</p>
+              <p>TCP does a <strong>"3-way handshake"</strong> before sending any data:</p>
+              <div class="flow">
+                <div class="flow-step">Your computer → Server: "SYN" (I want to connect)</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Server → Your computer: "SYN-ACK" (OK, I'm ready)</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Your computer → Server: "ACK" (Great, let's go)</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Data flows — every packet acknowledged</div>
+              </div>
+              <p><strong>Used for:</strong> web browsing (HTTP/HTTPS), file transfers, SSH, email — anything where you can't afford to lose data.</p>
+            </div>
+
+            <div class="lesson-block">
+              <h3>UDP — User Datagram Protocol</h3>
+              <p>UDP is like <strong>shouting across a room</strong>. You send the message and don't wait for confirmation. It's <strong>fast but unreliable</strong> — some packets may be lost.</p>
+              <p><strong>Used for:</strong> video streaming, online gaming, DNS lookups, VoIP calls — where speed matters more than perfection (a dropped frame in a video is fine; waiting for it to re-send is not).</p>
+              <table class="study-table">
+                <thead><tr><th></th><th>TCP</th><th>UDP</th></tr></thead>
+                <tbody>
+                  <tr><td>Reliability</td><td>Guaranteed delivery</td><td>Best-effort, may drop</td></tr>
+                  <tr><td>Speed</td><td>Slower (handshake + ACKs)</td><td>Faster (fire and forget)</td></tr>
+                  <tr><td>Order</td><td>Packets arrive in order</td><td>May arrive out of order</td></tr>
+                  <tr><td>Use case</td><td>SSH, HTTP, databases</td><td>Video, DNS, gaming</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Ports — knocking on the right door</h3>
+              <p>An IP address gets data to the right <em>machine</em>. A <strong>port number</strong> gets it to the right <em>application</em> on that machine. Think of the IP as a building address and the port as the apartment number.</p>
+              <table class="study-table">
+                <thead><tr><th>Port</th><th>Protocol</th><th>What it's for</th></tr></thead>
+                <tbody>
+                  <tr><td>22</td><td>TCP</td><td>SSH — remote login to a Linux server</td></tr>
+                  <tr><td>80</td><td>TCP</td><td>HTTP — unencrypted web traffic</td></tr>
+                  <tr><td>443</td><td>TCP</td><td>HTTPS — encrypted web traffic</td></tr>
+                  <tr><td>53</td><td>UDP</td><td>DNS — name resolution</td></tr>
+                  <tr><td>3306</td><td>TCP</td><td>MySQL database</td></tr>
+                  <tr><td>5432</td><td>TCP</td><td>PostgreSQL database</td></tr>
+                  <tr><td>6379</td><td>TCP</td><td>Redis cache</td></tr>
+                  <tr><td>8080</td><td>TCP</td><td>Common dev/test HTTP port</td></tr>
+                </tbody>
+              </table>
+              <div class="tip">Ports 0–1023 are "well-known" and reserved for system services. Ports 1024–65535 are for apps. Databases should NEVER be open on port 3306/5432 to the public internet.</div>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Linux commands to inspect ports</h3>
+              <pre><code># See all listening ports on your machine
+ss -tulpn
+
+# What's using port 80?
+ss -tulpn | grep :80
+
+# Check if a remote port is open
+nc -zv google.com 443
+
+# Or with telnet
+telnet google.com 443
+
+# See all active connections
+ss -tn</code></pre>
+            </div>
+
+            <div class="lesson-block exercise">
+              <h3>Practice exercise</h3>
+              <ol>
+                <li>Run <code>ss -tulpn</code> on your Linux machine. See which ports are listening.</li>
+                <li>If you have a web server running, you should see port 80 or 443 in the list.</li>
+                <li>Run <code>nc -zv google.com 443</code> — if it says "Connected", port 443 is open on Google's server.</li>
+                <li>Try <code>nc -zv google.com 22</code> — this should fail (Google doesn't allow SSH from the internet).</li>
+              </ol>
+            </div>
+
           </div>
         </div>
 
-        <div class="card" id="topic-linux-net">
-          <div class="card-header">
+        <!-- LESSON: LINUX NETWORKING COMMANDS -->
+        <div class="lesson" id="topic-linux-net">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="1" data-topic="linux-net"/>
               <span class="checkmark"></span>
-              <span class="card-title">Linux Networking Commands</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">Linux Networking Commands</span>
+                <span class="lesson-desc">Essential tools you'll use every day as a DevOps engineer</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <pre><code># Check your IP address
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>ip — the main networking tool</h3>
+              <pre><code># Show all network interfaces and their IPs
 ip addr show
 
-# Test connectivity
-ping 8.8.8.8
+# Show just a specific interface
+ip addr show eth0
 
-# Trace packet route
+# Show routing table (how traffic leaves your machine)
+ip route show
+
+# Add a static route
+ip route add 10.0.0.0/24 via 192.168.1.1
+
+# Show neighbours (like ARP table — maps IPs to MACs)
+ip neigh show</code></pre>
+            </div>
+
+            <div class="lesson-block">
+              <h3>ping — is the host alive?</h3>
+              <pre><code># Basic ping
+ping google.com
+
+# Ping only 4 times (instead of forever)
+ping -c 4 google.com
+
+# Ping with a specific packet size (useful for MTU testing)
+ping -s 1400 google.com
+
+# Ping a specific IP
+ping 8.8.8.8</code></pre>
+              <p>If ping fails it could mean: host is down, firewall is blocking ICMP, or DNS can't resolve the name. Try pinging the IP directly to rule out DNS issues.</p>
+            </div>
+
+            <div class="lesson-block">
+              <h3>traceroute — follow the path</h3>
+              <pre><code># Show every router hop between you and the destination
 traceroute google.com
 
-# DNS lookup
-dig google.com
-nslookup google.com
+# Use TCP instead of ICMP (bypasses some firewalls)
+traceroute -T google.com
 
-# Check open ports
+# Use UDP
+traceroute -U google.com</code></pre>
+              <p>Each line is one "hop" — a router your packet passed through. The number is the latency in ms. A * means the router didn't respond (firewall). Great for diagnosing where packets get lost.</p>
+            </div>
+
+            <div class="lesson-block">
+              <h3>ss and netstat — port and connection inspection</h3>
+              <pre><code># All listening TCP/UDP ports
 ss -tulpn
 
-# View connections
-ss -s
+# -t = TCP, -u = UDP, -l = listening, -p = process name, -n = numeric (no DNS lookup)
 
-# Firewall status
+# All established connections
+ss -tn
+
+# All connections to a specific port
+ss -tn dst :443
+
+# Older equivalent
+netstat -tulpn</code></pre>
+            </div>
+
+            <div class="lesson-block">
+              <h3>curl — test HTTP from terminal</h3>
+              <pre><code># Fetch a webpage
+curl https://google.com
+
+# See the HTTP headers (useful for debugging)
+curl -I https://google.com
+
+# Send a POST request (like an API call)
+curl -X POST https://api.example.com/data \
+  -H "Content-Type: application/json" \
+  -d '{"key": "value"}'
+
+# Follow redirects (-L) and be verbose (-v)
+curl -Lv https://google.com
+
+# Download a file
+curl -O https://example.com/file.zip</code></pre>
+              <div class="tip">curl is your best friend for testing APIs, checking if a server responds, and debugging HTTP issues. Learn it well.</div>
+            </div>
+
+            <div class="lesson-block">
+              <h3>ufw / iptables — firewall</h3>
+              <pre><code># Check firewall status
 ufw status
-iptables -L</code></pre>
+
+# Enable firewall
+ufw enable
+
+# Allow SSH (always do this before enabling the firewall!)
+ufw allow 22/tcp
+
+# Allow HTTP and HTTPS
+ufw allow 80/tcp
+ufw allow 443/tcp
+
+# Block a specific IP
+ufw deny from 192.168.1.100
+
+# Delete a rule
+ufw delete allow 80/tcp</code></pre>
+            </div>
+
+            <div class="lesson-block exercise">
+              <h3>Practice exercise — full networking workout</h3>
+              <ol>
+                <li>Run <code>ip addr show</code> — write down your private IP.</li>
+                <li>Run <code>ip route show</code> — find your default gateway (the router's IP).</li>
+                <li>Run <code>ping -c 3 8.8.8.8</code> — confirm you have internet access.</li>
+                <li>Run <code>traceroute google.com</code> — count how many hops it takes.</li>
+                <li>Run <code>curl -I https://github.com</code> — look at the HTTP status code (should be 200).</li>
+                <li>Run <code>ss -tulpn</code> — identify every service listening on your machine.</li>
+              </ol>
+            </div>
+
           </div>
         </div>
 
-      </div>
+      </div><!-- /lessons -->
     </section>
 
-    <!-- PHASE 2: DEVOPS -->
+    <!-- ═══════════════════════════════════════════════
+         PHASE 2: DEVOPS & CLOUD
+    ═══════════════════════════════════════════════ -->
     <section class="section phase-section" id="phase-2">
       <div class="phase-header phase-2-header">
         <span class="phase-badge">Phase 2</span>
         <h2>DevOps &amp; Cloud Networking</h2>
-        <div class="phase-progress-wrap">
-          <div class="phase-progress-bar" id="prog-2"></div>
-        </div>
+        <div class="phase-progress-wrap"><div class="phase-progress-bar" id="prog-2"></div></div>
         <span class="phase-pct" id="pct-2">0%</span>
       </div>
 
-      <div class="cards-grid">
+      <div class="lessons">
 
-        <div class="card" id="topic-pipeline">
-          <div class="card-header">
+        <!-- LESSON: DEVOPS PIPELINE -->
+        <div class="lesson" id="topic-pipeline">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="2" data-topic="pipeline"/>
               <span class="checkmark"></span>
-              <span class="card-title">DevOps Pipeline</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">The DevOps Pipeline</span>
+                <span class="lesson-desc">How code goes from a developer's laptop to the internet</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <p>The journey from code to production:</p>
-            <pre><code>Developer writes code
-      ↓
-Git commit + push
-      ↓
-CI/CD Pipeline (build + test)  ← GitHub Actions, Jenkins
-      ↓
-Docker container built
-      ↓
-Deployed to Cloud (AWS/Azure/GCP)
-      ↓
-Load Balancer distributes traffic
-      ↓
-Users access via DNS</code></pre>
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>What is DevOps?</h3>
+              <p>Before DevOps, developers wrote code and "threw it over the wall" to an operations team who deployed it. This was slow and caused many conflicts. DevOps combines both roles and <strong>automates the entire journey from code to production</strong>.</p>
+              <p>The goal: deploy software <strong>faster, more reliably, and repeatedly</strong> — with no manual steps.</p>
+            </div>
+
+            <div class="lesson-block">
+              <h3>The full pipeline</h3>
+              <div class="flow">
+                <div class="flow-step"><strong>1. Code</strong> — Developer writes code, pushes to Git (GitHub/GitLab)</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step"><strong>2. CI (Continuous Integration)</strong> — Automated system runs tests. If tests fail, deploy is stopped. Tools: GitHub Actions, Jenkins, GitLab CI</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step"><strong>3. Build</strong> — Code is packaged into a Docker container image</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step"><strong>4. CD (Continuous Deployment)</strong> — Image is automatically deployed to staging, then production</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step"><strong>5. Infrastructure</strong> — Servers/cloud resources managed as code (Terraform, Ansible)</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step"><strong>6. Monitor</strong> — Metrics, logs, alerts watched 24/7 (Prometheus, Grafana, Datadog)</div>
+              </div>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Key DevOps tools to know</h3>
+              <table class="study-table">
+                <thead><tr><th>Category</th><th>Tool</th><th>What it does</th></tr></thead>
+                <tbody>
+                  <tr><td>Version Control</td><td>Git, GitHub</td><td>Track code changes, collaborate</td></tr>
+                  <tr><td>CI/CD</td><td>GitHub Actions, Jenkins</td><td>Automate build, test, deploy</td></tr>
+                  <tr><td>Containers</td><td>Docker</td><td>Package apps + dependencies together</td></tr>
+                  <tr><td>Orchestration</td><td>Kubernetes</td><td>Run and manage many containers</td></tr>
+                  <tr><td>Infrastructure as Code</td><td>Terraform</td><td>Define cloud resources in code</td></tr>
+                  <tr><td>Config Management</td><td>Ansible</td><td>Automate server configuration</td></tr>
+                  <tr><td>Monitoring</td><td>Prometheus + Grafana</td><td>Metrics collection and dashboards</td></tr>
+                </tbody>
+              </table>
+            </div>
+
           </div>
         </div>
 
-        <div class="card" id="topic-lb">
-          <div class="card-header">
+        <!-- LESSON: LOAD BALANCING -->
+        <div class="lesson" id="topic-lb">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="2" data-topic="lb"/>
               <span class="checkmark"></span>
-              <span class="card-title">Load Balancing</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">Load Balancing</span>
+                <span class="lesson-desc">Spreading traffic across servers so none gets overwhelmed</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <p>Spreads incoming traffic across multiple servers so no single server is overwhelmed.</p>
-            <pre><code>              ┌── Server 1
-Internet → LB ├── Server 2
-              └── Server 3</code></pre>
-            <ul>
-              <li><strong>Round-robin:</strong> Rotate through servers evenly</li>
-              <li><strong>Least connections:</strong> Send to least busy server</li>
-              <li><strong>IP hash:</strong> Same user always hits same server</li>
-            </ul>
-            <p><strong>Tools:</strong> Nginx, HAProxy, AWS ELB, Cloudflare</p>
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>Why load balancing?</h3>
+              <p>If you have 1 server handling all traffic and it gets 10,000 requests/second, it crashes. A <strong>load balancer</strong> sits in front of multiple servers and distributes the traffic between them. If one server crashes, the LB stops sending traffic to it automatically — users don't notice.</p>
+              <pre><code>                     ┌── Server 1 (handles ~33% of traffic)
+Internet → Load ─────├── Server 2 (handles ~33% of traffic)
+           Balancer  └── Server 3 (handles ~33% of traffic)</code></pre>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Load balancing algorithms</h3>
+              <table class="study-table">
+                <thead><tr><th>Algorithm</th><th>How it works</th><th>Best for</th></tr></thead>
+                <tbody>
+                  <tr><td>Round Robin</td><td>Rotates through servers in order (1→2→3→1→2→3)</td><td>Stateless apps where all servers are equal</td></tr>
+                  <tr><td>Least Connections</td><td>Sends to the server with fewest active connections</td><td>Long-running connections (WebSockets)</td></tr>
+                  <tr><td>IP Hash</td><td>Same client IP always goes to same server</td><td>Apps that need "sticky sessions"</td></tr>
+                  <tr><td>Weighted</td><td>Bigger servers get more traffic based on weight</td><td>Mixed server sizes</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Layer 4 vs Layer 7 load balancing</h3>
+              <ul>
+                <li><strong>Layer 4 (TCP/UDP)</strong> — Routes based on IP/port only. Fast but dumb. Doesn't understand HTTP. Example: AWS NLB.</li>
+                <li><strong>Layer 7 (HTTP)</strong> — Understands URLs, headers, cookies. Can route <code>/api/*</code> to one set of servers and <code>/images/*</code> to another. Example: Nginx, AWS ALB, Cloudflare.</li>
+              </ul>
+              <div class="tip">In cloud, you'll almost always use a Layer 7 (HTTP) load balancer like AWS ALB or Nginx. It lets you do smart routing, SSL termination, and health checks.</div>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Nginx as a load balancer</h3>
+              <pre><code># /etc/nginx/nginx.conf
+upstream myapp {
+    server 10.0.0.1:8080;
+    server 10.0.0.2:8080;
+    server 10.0.0.3:8080;
+}
+
+server {
+    listen 80;
+    location / {
+        proxy_pass http://myapp;
+    }
+}</code></pre>
+            </div>
+
           </div>
         </div>
 
-        <div class="card" id="topic-vpc">
-          <div class="card-header">
+        <!-- LESSON: VPC -->
+        <div class="lesson" id="topic-vpc">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="2" data-topic="vpc"/>
               <span class="checkmark"></span>
-              <span class="card-title">VPC &amp; Cloud Networking</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">VPC &amp; Cloud Networking</span>
+                <span class="lesson-desc">Your own private network inside AWS/Azure/GCP</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <p><strong>VPC (Virtual Private Cloud)</strong> is your own isolated network inside AWS/Azure/GCP.</p>
-            <ul>
-              <li><strong>Public subnet:</strong> Has internet access — put load balancers here</li>
-              <li><strong>Private subnet:</strong> No direct internet — put databases and app servers here</li>
-              <li><strong>Security Groups:</strong> Virtual firewall for EC2 instances</li>
-              <li><strong>NACLs:</strong> Subnet-level firewall rules</li>
-            </ul>
-            <div class="tip">Golden rule: databases should NEVER be in a public subnet.</div>
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>What is a VPC?</h3>
+              <p>A <strong>VPC (Virtual Private Cloud)</strong> is your own isolated network inside a cloud provider. It's like having your own private office building inside a massive shared data center. You control the IP ranges, subnets, routing, and firewall rules.</p>
+            </div>
+
+            <div class="lesson-block">
+              <h3>VPC architecture — the standard pattern</h3>
+              <pre><code>VPC: 10.0.0.0/16 (your whole network)
+  │
+  ├── Public Subnet: 10.0.1.0/24
+  │     └── Load Balancer (has internet access)
+  │
+  └── Private Subnet: 10.0.2.0/24
+        ├── App Servers (no direct internet)
+        └── Database (no direct internet)</code></pre>
+              <div class="tip">Golden rule: <strong>Databases must always be in a private subnet</strong>. Only load balancers should be in public subnets. App servers can go either way, but private is more secure.</div>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Key VPC components</h3>
+              <table class="study-table">
+                <thead><tr><th>Component</th><th>What it does</th></tr></thead>
+                <tbody>
+                  <tr><td>Internet Gateway</td><td>Connects your VPC to the public internet</td></tr>
+                  <tr><td>Route Table</td><td>Rules for where traffic goes (like a GPS for packets)</td></tr>
+                  <tr><td>Security Group</td><td>Virtual firewall for EC2 instances — allow/deny by port and IP</td></tr>
+                  <tr><td>NACL</td><td>Network Access Control List — subnet-level firewall</td></tr>
+                  <tr><td>NAT Gateway</td><td>Lets private subnet resources reach the internet (outbound only)</td></tr>
+                  <tr><td>VPC Peering</td><td>Connect two VPCs so they can communicate privately</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Security Groups vs NACLs</h3>
+              <table class="study-table">
+                <thead><tr><th></th><th>Security Group</th><th>NACL</th></tr></thead>
+                <tbody>
+                  <tr><td>Applies to</td><td>Individual EC2 instances</td><td>Entire subnet</td></tr>
+                  <tr><td>State</td><td>Stateful (return traffic auto-allowed)</td><td>Stateless (must allow both directions)</td></tr>
+                  <tr><td>Default</td><td>Deny all in, allow all out</td><td>Allow all in and out</td></tr>
+                  <tr><td>Use for</td><td>Per-server rules</td><td>Subnet-wide blocks</td></tr>
+                </tbody>
+              </table>
+            </div>
+
           </div>
         </div>
 
-        <div class="card" id="topic-docker">
-          <div class="card-header">
+        <!-- LESSON: DOCKER -->
+        <div class="lesson" id="topic-docker">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="2" data-topic="docker"/>
               <span class="checkmark"></span>
-              <span class="card-title">Docker Networking</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">Docker &amp; Container Networking</span>
+                <span class="lesson-desc">Package your app once, run it anywhere — and make containers talk to each other</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <p>Docker creates virtual networks so containers can talk to each other.</p>
-            <pre><code># List networks
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>What is Docker?</h3>
+              <p>Docker packages your application and <strong>all its dependencies</strong> into a single unit called a <strong>container</strong>. The container runs identically on your laptop, a CI server, or in production. No more "it works on my machine" problems.</p>
+              <ul>
+                <li><strong>Image:</strong> The blueprint (like a class in programming)</li>
+                <li><strong>Container:</strong> A running instance of an image (like an object)</li>
+                <li><strong>Dockerfile:</strong> Instructions to build an image</li>
+                <li><strong>Registry:</strong> Where images are stored (Docker Hub, AWS ECR)</li>
+              </ul>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Docker networking modes</h3>
+              <table class="study-table">
+                <thead><tr><th>Network mode</th><th>What it means</th><th>Use case</th></tr></thead>
+                <tbody>
+                  <tr><td>bridge (default)</td><td>Container gets its own IP on a virtual network</td><td>Most apps</td></tr>
+                  <tr><td>host</td><td>Container shares the host machine's network stack</td><td>High performance</td></tr>
+                  <tr><td>none</td><td>No network access at all</td><td>Isolated processing</td></tr>
+                  <tr><td>custom bridge</td><td>User-defined network — containers find each other by name</td><td>Multi-container apps</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Making containers talk to each other</h3>
+              <pre><code># Create a shared network
+docker network create app-network
+
+# Start a database container on that network
+docker run -d \
+  --name postgres-db \
+  --network app-network \
+  -e POSTGRES_PASSWORD=secret \
+  postgres:15
+
+# Start your app on the same network
+# It can reach the DB using hostname "postgres-db"
+docker run -d \
+  --name my-app \
+  --network app-network \
+  -p 8080:8080 \
+  -e DB_HOST=postgres-db \
+  my-app-image
+
+# List networks
 docker network ls
 
-# Create a network
-docker network create my-app-network
+# Inspect a network — see which containers are on it
+docker network inspect app-network</code></pre>
+              <div class="tip">Containers on the same custom bridge network can reach each other by <strong>container name</strong> as a hostname. No IPs needed. DNS works automatically.</div>
+            </div>
 
-# Run containers on same network
-docker run --network my-app-network --name db postgres
-docker run --network my-app-network --name app myapp
-# 'app' can reach 'db' by hostname 'db'</code></pre>
+            <div class="lesson-block">
+              <h3>Port mapping — exposing containers</h3>
+              <pre><code># -p HOST_PORT:CONTAINER_PORT
+# Container listens on 8080 internally
+# You access it on port 3000 from your machine
+docker run -p 3000:8080 my-app
+
+# Bind to a specific host IP
+docker run -p 127.0.0.1:3000:8080 my-app</code></pre>
+            </div>
+
           </div>
         </div>
 
-        <div class="card" id="topic-k8s">
-          <div class="card-header">
+        <!-- LESSON: KUBERNETES -->
+        <div class="lesson" id="topic-k8s">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="2" data-topic="k8s"/>
               <span class="checkmark"></span>
-              <span class="card-title">Kubernetes Networking</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">Kubernetes Networking</span>
+                <span class="lesson-desc">Running hundreds of containers at scale — and making them discoverable</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <ul>
-              <li><strong>Pod:</strong> Smallest unit — gets its own IP</li>
-              <li><strong>Service:</strong> Stable DNS name + IP in front of pods</li>
-              <li><strong>Ingress:</strong> Routes external HTTP(S) to services — like a smart load balancer</li>
-              <li><strong>CNI:</strong> Plugin that handles pod-to-pod networking (Calico, Flannel, Cilium)</li>
-            </ul>
-            <pre><code># Expose a deployment as a service
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>What is Kubernetes (K8s)?</h3>
+              <p>Docker runs one container. Kubernetes runs <strong>hundreds or thousands</strong> of containers across many machines and manages them automatically — restarting crashed ones, scaling up when traffic increases, rolling out updates with zero downtime.</p>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Core networking concepts</h3>
+              <table class="study-table">
+                <thead><tr><th>Concept</th><th>What it is</th><th>Analogy</th></tr></thead>
+                <tbody>
+                  <tr><td>Pod</td><td>Smallest unit — 1+ containers with a shared IP</td><td>An apartment</td></tr>
+                  <tr><td>Service</td><td>Stable DNS name + IP in front of pods</td><td>Building's reception desk</td></tr>
+                  <tr><td>Ingress</td><td>HTTP load balancer that routes by URL/hostname</td><td>A concierge who directs visitors</td></tr>
+                  <tr><td>CNI Plugin</td><td>Handles pod-to-pod networking (Calico, Flannel, Cilium)</td><td>The building's internal phone system</td></tr>
+                  <tr><td>ClusterIP</td><td>Service only reachable within the cluster</td><td>Internal extension number</td></tr>
+                  <tr><td>NodePort</td><td>Service exposed on a port on every node</td><td>A public phone number</td></tr>
+                  <tr><td>LoadBalancer</td><td>Creates a cloud load balancer for the service</td><td>A toll-free 1-800 number</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Key commands</h3>
+              <pre><code># See all running pods and their IPs
+kubectl get pods -o wide
+
+# See all services
+kubectl get services
+
+# Expose a deployment as a LoadBalancer service
 kubectl expose deployment myapp --port=80 --type=LoadBalancer
 
-# Check services
-kubectl get services
-kubectl get ingress</code></pre>
+# See Ingress rules
+kubectl get ingress
+
+# Check pod logs
+kubectl logs pod-name
+
+# Get inside a running pod (like SSH for containers)
+kubectl exec -it pod-name -- /bin/bash</code></pre>
+            </div>
+
+            <div class="lesson-block">
+              <h3>How a request flows in Kubernetes</h3>
+              <div class="flow">
+                <div class="flow-step">User → DNS resolves to Ingress IP</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Ingress routes /api/* to "api-service"</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Service load-balances across 3 Pods</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step">Pod handles the request, returns response</div>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <div class="card" id="topic-monitoring">
-          <div class="card-header">
+        <!-- LESSON: MONITORING -->
+        <div class="lesson" id="topic-monitoring">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="2" data-topic="monitoring"/>
               <span class="checkmark"></span>
-              <span class="card-title">Monitoring &amp; Observability</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">Monitoring &amp; Observability</span>
+                <span class="lesson-desc">Knowing what your infrastructure is doing — before users complain</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <p>The three pillars of observability:</p>
-            <ul>
-              <li><strong>Metrics:</strong> Numbers over time — CPU, memory, request rate (Prometheus)</li>
-              <li><strong>Logs:</strong> Text records of events (ELK Stack, Loki)</li>
-              <li><strong>Traces:</strong> Track a request across microservices (Jaeger, Zipkin)</li>
-            </ul>
-            <p><strong>Stack:</strong> Prometheus (collect) → Grafana (visualize) → Alertmanager (alert)</p>
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>The 3 pillars of observability</h3>
+              <table class="study-table">
+                <thead><tr><th>Pillar</th><th>What it is</th><th>Tool</th><th>Example</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Metrics</strong></td><td>Numbers over time</td><td>Prometheus, Datadog</td><td>CPU: 75%, Requests/sec: 1200</td></tr>
+                  <tr><td><strong>Logs</strong></td><td>Text records of events</td><td>ELK Stack, Loki</td><td>"ERROR: DB connection failed at 14:32"</td></tr>
+                  <tr><td><strong>Traces</strong></td><td>Track one request across services</td><td>Jaeger, Zipkin</td><td>Request took 500ms — 400ms was in the DB</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="lesson-block">
+              <h3>The standard open-source stack</h3>
+              <div class="flow">
+                <div class="flow-step"><strong>Prometheus</strong> — Scrapes metrics from your apps every 15 seconds. Stores them as time-series data.</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step"><strong>Grafana</strong> — Connects to Prometheus and visualizes data as beautiful dashboards and graphs.</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-step"><strong>Alertmanager</strong> — When a metric crosses a threshold (CPU > 90%), sends alert to Slack/PagerDuty/email.</div>
+              </div>
+            </div>
+
+            <div class="lesson-block">
+              <h3>What to monitor</h3>
+              <p>The <strong>RED method</strong> for services:</p>
+              <ul>
+                <li><strong>R</strong>ate — requests per second</li>
+                <li><strong>E</strong>rrors — error rate (%)</li>
+                <li><strong>D</strong>uration — latency (how slow?)</li>
+              </ul>
+              <p>The <strong>USE method</strong> for infrastructure:</p>
+              <ul>
+                <li><strong>U</strong>tilization — CPU/memory % used</li>
+                <li><strong>S</strong>aturation — queue depth, wait time</li>
+                <li><strong>E</strong>rrors — disk errors, network drops</li>
+              </ul>
+            </div>
+
           </div>
         </div>
 
-      </div>
+      </div><!-- /lessons -->
     </section>
 
-    <!-- PHASE 3: AI -->
+    <!-- ═══════════════════════════════════════════════
+         PHASE 3: AI USE CASES
+    ═══════════════════════════════════════════════ -->
     <section class="section phase-section" id="phase-3">
       <div class="phase-header phase-3-header">
         <span class="phase-badge">Phase 3</span>
         <h2>AI Use Cases in Networking &amp; DevOps</h2>
-        <div class="phase-progress-wrap">
-          <div class="phase-progress-bar" id="prog-3"></div>
-        </div>
+        <div class="phase-progress-wrap"><div class="phase-progress-bar" id="prog-3"></div></div>
         <span class="phase-pct" id="pct-3">0%</span>
       </div>
 
-      <div class="cards-grid">
+      <div class="lessons">
 
-        <div class="card" id="topic-aiops">
-          <div class="card-header">
+        <!-- LESSON: AIOps -->
+        <div class="lesson" id="topic-aiops">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="3" data-topic="aiops"/>
               <span class="checkmark"></span>
-              <span class="card-title">AIOps — AI for IT Operations</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">AIOps — AI for IT Operations</span>
+                <span class="lesson-desc">AI that watches your infrastructure 24/7 and acts before problems happen</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <p>AI monitors your infra and detects problems before users notice.</p>
-            <ul>
-              <li><strong>Anomaly Detection:</strong> AI learns normal traffic — alerts on deviations</li>
-              <li><strong>Predictive Failure:</strong> Predicts disk failure 48 hours in advance</li>
-              <li><strong>Root Cause Analysis:</strong> Finds which of 100 microservices caused the slowdown</li>
-            </ul>
-            <p><strong>Tools:</strong> Dynatrace, Datadog, Splunk, New Relic</p>
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>What is AIOps?</h3>
+              <p>AIOps (Artificial Intelligence for IT Operations) uses machine learning to <strong>automate and enhance IT operations</strong>. Instead of a human watching dashboards at 3am, AI models continuously monitor your systems and detect, predict, and sometimes fix problems automatically.</p>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Key AIOps capabilities</h3>
+              <table class="study-table">
+                <thead><tr><th>Capability</th><th>What it does</th><th>Real example</th></tr></thead>
+                <tbody>
+                  <tr><td>Anomaly Detection</td><td>Learns "normal" — alerts when something unusual happens</td><td>Traffic at 3am suddenly spikes 10x — alert fires</td></tr>
+                  <tr><td>Predictive Failure</td><td>Predicts hardware/software failure before it happens</td><td>"Disk will fail in 48 hours" — replace it now</td></tr>
+                  <tr><td>Root Cause Analysis</td><td>Finds the source of a problem across 100 microservices</td><td>"Slowness caused by database query in user-service"</td></tr>
+                  <tr><td>Auto-remediation</td><td>Automatically fixes known issues</td><td>Memory leak detected → pod restarted automatically</td></tr>
+                  <tr><td>Noise Reduction</td><td>Filters thousands of alerts down to the few that matter</td><td>Groups 200 related alerts into 1 "incident"</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="lesson-block">
+              <h3>How anomaly detection works</h3>
+              <p>The AI model is trained on historical data — e.g., your CPU usage over the past 3 months. It learns patterns: traffic is high Mon–Fri 9am–6pm, low at night. Once trained:</p>
+              <ul>
+                <li>Normal Saturday 2am CPU: 5% → no alert</li>
+                <li>Saturday 2am CPU suddenly hits 80% → anomaly detected → alert!</li>
+              </ul>
+              <p>This catches attacks, runaway processes, or failures that static threshold alerts ("alert if CPU &gt; 90%") would miss.</p>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Tools</h3>
+              <ul>
+                <li><strong>Datadog</strong> — Cloud monitoring with built-in anomaly detection. Free trial available.</li>
+                <li><strong>Dynatrace</strong> — Fully automatic AI called "Davis" that does root cause analysis.</li>
+                <li><strong>Splunk ITSI</strong> — AIOps for large enterprises.</li>
+                <li><strong>New Relic</strong> — Applied Intelligence for alert grouping and correlation.</li>
+              </ul>
+            </div>
+
           </div>
         </div>
 
-        <div class="card" id="topic-ai-security">
-          <div class="card-header">
+        <!-- LESSON: AI SECURITY -->
+        <div class="lesson" id="topic-ai-security">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="3" data-topic="ai-security"/>
               <span class="checkmark"></span>
-              <span class="card-title">AI-Driven Network Security</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">AI-Driven Network Security</span>
+                <span class="lesson-desc">Using AI to detect threats that traditional firewalls miss</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <pre><code>Normal:    Login from NY, 9am, downloads 50MB
-Anomaly:   Login from unknown country, 2am, downloads 50GB
-           → AI flags + blocks automatically</code></pre>
-            <ul>
-              <li><strong>IDS/IPS:</strong> Intrusion Detection/Prevention using AI models</li>
-              <li><strong>DDoS Detection:</strong> Distinguish real traffic from attack floods</li>
-              <li><strong>UEBA:</strong> User behavior analytics — catches insider threats</li>
-            </ul>
-            <p><strong>Tools:</strong> CrowdStrike, Darktrace, AWS GuardDuty, Palo Alto Cortex</p>
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>Why traditional security isn't enough</h3>
+              <p>Traditional firewalls work with <strong>rules and known signatures</strong> — "block traffic from IP X" or "block files that match this virus signature". The problem: attackers constantly change their techniques. A new malware that nobody has seen before won't match any signature.</p>
+              <p>AI-driven security detects threats by <strong>behavior</strong>, not signatures. It learns what "normal" looks like and flags anomalies.</p>
+            </div>
+
+            <div class="lesson-block">
+              <h3>AI security use cases</h3>
+              <table class="study-table">
+                <thead><tr><th>Use case</th><th>How AI helps</th><th>Tool</th></tr></thead>
+                <tbody>
+                  <tr><td>Intrusion Detection</td><td>ML models trained on attack patterns detect new variants</td><td>Snort + ML, CrowdStrike</td></tr>
+                  <tr><td>DDoS Detection</td><td>Distinguishes legitimate traffic spikes from attack floods</td><td>Cloudflare, AWS Shield</td></tr>
+                  <tr><td>Insider Threat (UEBA)</td><td>Flags when an employee downloads unusual amounts of data</td><td>Varonis, Exabeam</td></tr>
+                  <tr><td>Zero-day Detection</td><td>Catches unknown malware by behavioral analysis</td><td>Darktrace, SentinelOne</td></tr>
+                  <tr><td>Phishing Detection</td><td>NLP models analyze email text/links for phishing patterns</td><td>Proofpoint, Microsoft Defender</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Real example: Insider threat detection</h3>
+              <pre><code>Normal user baseline (learned over 30 days):
+  - Logs in from: New York, 9am–6pm
+  - Downloads: ~50MB/day from internal systems
+  - Accesses: HR system, project folders
+
+Anomaly detected:
+  - Login from: Moscow, 2am
+  - Downloads: 50GB in 20 minutes
+  - Accesses: ALL financial records
+
+→ AI flags this, blocks the session, alerts security team</code></pre>
+            </div>
+
           </div>
         </div>
 
-        <div class="card" id="topic-netdevops">
-          <div class="card-header">
+        <!-- LESSON: NETDEVOPS -->
+        <div class="lesson" id="topic-netdevops">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="3" data-topic="netdevops"/>
               <span class="checkmark"></span>
-              <span class="card-title">AI for Network Configuration</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">AI for Network Configuration</span>
+                <span class="lesson-desc">Replacing manual CLI commands with AI-driven network management</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <p>Replacing manual CLI-typing with AI-driven config management.</p>
-            <ul>
-              <li><strong>NL to Config:</strong> "Block all traffic from X" → AI generates firewall rules</li>
-              <li><strong>Drift Detection:</strong> Compares actual vs intended config, flags differences</li>
-              <li><strong>Auto-remediation:</strong> Detects and fixes misconfigs without humans</li>
-            </ul>
-            <p><strong>Tools:</strong> Cisco DNA Center, Juniper Apstra, Ansible + LLM</p>
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>The old way vs the AI way</h3>
+              <table class="study-table">
+                <thead><tr><th>Old way</th><th>AI way</th></tr></thead>
+                <tbody>
+                  <tr><td>Engineer SSHes into each router/switch manually</td><td>AI generates config from natural language intent</td></tr>
+                  <tr><td>Manually check 500 devices for config drift</td><td>AI continuously monitors and alerts on deviations</td></tr>
+                  <tr><td>Write Ansible playbooks by hand</td><td>Describe what you want, AI generates the playbook</td></tr>
+                  <tr><td>Troubleshoot by reading logs</td><td>AI correlates logs across devices and finds root cause</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Example: Natural language to firewall rule</h3>
+              <pre><code>Engineer types:  "Block all inbound traffic from China except port 443"
+
+AI generates:
+  iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+  iptables -A INPUT -m geoip --src-cc CN -j DROP
+
+  # Or as AWS Security Group rule:
+  Inbound rules:
+    - Allow TCP 443 from 0.0.0.0/0
+    - Deny ALL from CN (via WAF GeoBlock)</code></pre>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Config drift detection</h3>
+              <p>Your intended config: "All web servers should have port 22 closed". AI checks all 500 servers every hour. If server #247 has port 22 open (maybe someone opened it for debugging and forgot), AI alerts immediately or auto-closes it.</p>
+              <p><strong>Tools:</strong> Cisco DNA Center, Juniper Apstra, AWS Config, Ansible + LLM integration</p>
+            </div>
+
           </div>
         </div>
 
-        <div class="card" id="topic-sdwan">
-          <div class="card-header">
-            <label class="check-label">
-              <input type="checkbox" class="topic-check" data-phase="3" data-topic="sdwan"/>
-              <span class="checkmark"></span>
-              <span class="card-title">Intelligent Traffic &amp; SD-WAN</span>
-            </label>
-            <button class="expand-btn" aria-label="expand">▼</button>
-          </div>
-          <div class="card-body hidden">
-            <ul>
-              <li><strong>SD-WAN:</strong> AI routes traffic on the best path in real time</li>
-              <li><strong>QoS:</strong> AI prioritizes video calls over file downloads automatically</li>
-              <li><strong>CDN optimization:</strong> AI predicts what content to cache where</li>
-            </ul>
-            <p><strong>Tools:</strong> Cloudflare, Fastly, AWS Global Accelerator</p>
-          </div>
-        </div>
-
-        <div class="card" id="topic-chatops">
-          <div class="card-header">
+        <!-- LESSON: CHATOPS -->
+        <div class="lesson" id="topic-chatops">
+          <div class="lesson-header">
             <label class="check-label">
               <input type="checkbox" class="topic-check" data-phase="3" data-topic="chatops"/>
               <span class="checkmark"></span>
-              <span class="card-title">ChatOps &amp; LLM Integration</span>
+              <div class="lesson-meta">
+                <span class="lesson-title">ChatOps &amp; LLM Integration</span>
+                <span class="lesson-desc">Building AI assistants that manage your infrastructure</span>
+              </div>
             </label>
             <button class="expand-btn" aria-label="expand">▼</button>
           </div>
-          <div class="card-body hidden">
-            <pre><code>Engineer → Slack: "Why is prod slow?"
-LLM Bot  → queries Datadog + K8s + logs
-LLM Bot  → "Pod myapp-3 has OOMKilled 5x.
-            Memory limit 512MB but using 800MB.
-            Recommend increasing limit."</code></pre>
-            <ul>
-              <li>LLM reads runbooks → auto-responds to alerts</li>
-              <li>AI generates Terraform/K8s YAML from natural language</li>
-              <li>AI-assisted incident postmortems</li>
-            </ul>
+
+          <div class="lesson-body hidden">
+
+            <div class="lesson-block">
+              <h3>What is ChatOps?</h3>
+              <p>ChatOps is running operations tasks through a chat interface (Slack, Teams) instead of logging into servers. Add an LLM (like Claude or GPT) and now your chat bot can <strong>query your infrastructure, diagnose problems, and take actions</strong>.</p>
+            </div>
+
+            <div class="lesson-block">
+              <h3>Example interaction</h3>
+              <pre><code>DevOps Engineer in Slack:
+  "@ops-bot why is the checkout service slow?"
+
+LLM Bot:
+  Checking Datadog... Kubernetes... logs...
+
+  Root cause found:
+  - checkout-service Pod #3 is consuming 98% CPU
+  - Spike started at 14:32 UTC (18 minutes ago)
+  - Correlates with deploy of version 2.1.4
+  - The /calculate-tax endpoint has a new N+1 query bug
+
+  Recommendation:
+  1. Roll back to 2.1.3: kubectl rollout undo deploy/checkout
+  2. File bug against PR #847 (merged at 14:30 UTC)
+
+  Shall I roll back? [Yes / No]</code></pre>
+            </div>
+
+            <div class="lesson-block">
+              <h3>What you can build</h3>
+              <ul>
+                <li><strong>Runbook automation</strong> — LLM reads your runbooks and follows them automatically when an alert fires</li>
+                <li><strong>IaC generation</strong> — "Create a Terraform module for a 3-tier web app in AWS" → LLM generates it</li>
+                <li><strong>Incident postmortems</strong> — LLM reads all alert history, logs, and deploys → writes the postmortem draft</li>
+                <li><strong>On-call assistant</strong> — LLM answers "what does this alert mean and what do I do?"</li>
+              </ul>
+            </div>
+
+            <div class="lesson-block">
+              <h3>How to build one (simple version)</h3>
+              <pre><code>1. Set up a Slack bot (Slack API)
+2. Bot receives messages from engineers
+3. Send message to Claude/GPT API with:
+   - The engineer's question
+   - Current metrics from Datadog API
+   - Recent logs from CloudWatch API
+   - Current K8s state from kubectl
+4. LLM reasons over all that data
+5. Bot posts the answer back in Slack</code></pre>
+              <div class="tip">Start simple — even a bot that can answer "what is the current CPU usage of pod X?" is immediately useful and teaches you the pattern.</div>
+            </div>
+
           </div>
         </div>
 
-      </div>
+      </div><!-- /lessons -->
     </section>
 
     <!-- RESOURCES -->
     <section class="section" id="resources">
       <h2 class="section-title">Free Resources</h2>
       <div class="resources-grid">
-        <div class="resource-card">
+        <a class="resource-card" href="https://www.professormesser.com/network-plus/n10-008/n10-008-video/n10-008-training-course/" target="_blank">
           <div class="resource-icon">📡</div>
-          <div class="resource-body">
-            <strong>Networking</strong>
-            <p>Professor Messer's CompTIA Network+ — YouTube, free</p>
-          </div>
-        </div>
-        <div class="resource-card">
-          <div class="resource-icon">🐧</div>
-          <div class="resource-body">
-            <strong>Linux Networking</strong>
-            <p><code>man ip</code>, <code>man ss</code> in your terminal</p>
-          </div>
-        </div>
-        <div class="resource-card">
+          <div class="resource-body"><strong>Networking — Professor Messer</strong><p>Free CompTIA Network+ video course. Best beginner networking resource on the internet.</p></div>
+        </a>
+        <a class="resource-card" href="https://docs.docker.com/get-started/" target="_blank">
           <div class="resource-icon">🐳</div>
-          <div class="resource-body">
-            <strong>Docker</strong>
-            <p>docs.docker.com — official tutorial, free</p>
-          </div>
-        </div>
-        <div class="resource-card">
+          <div class="resource-body"><strong>Docker — Official Tutorial</strong><p>Official Docker getting started guide. Interactive and beginner-friendly.</p></div>
+        </a>
+        <a class="resource-card" href="https://killercoda.com/playgrounds/scenario/kubernetes" target="_blank">
           <div class="resource-icon">☸️</div>
-          <div class="resource-body">
-            <strong>Kubernetes</strong>
-            <p>killer.sh free scenarios, KillerCoda (browser-based)</p>
-          </div>
-        </div>
-        <div class="resource-card">
+          <div class="resource-body"><strong>Kubernetes — KillerCoda</strong><p>Free browser-based Kubernetes playground. No installation needed.</p></div>
+        </a>
+        <a class="resource-card" href="https://aws.amazon.com/free/" target="_blank">
           <div class="resource-icon">☁️</div>
-          <div class="resource-body">
-            <strong>Cloud Networking</strong>
-            <p>AWS free tier + official docs (12 months free)</p>
-          </div>
-        </div>
-        <div class="resource-card">
+          <div class="resource-body"><strong>AWS Free Tier</strong><p>12 months of free cloud resources. Create a VPC, launch EC2 instances, practice real networking.</p></div>
+        </a>
+        <a class="resource-card" href="https://app.datadoghq.com/signup" target="_blank">
           <div class="resource-icon">🤖</div>
-          <div class="resource-body">
-            <strong>AI + DevOps</strong>
-            <p>Datadog free trial, Grafana Cloud free tier</p>
-          </div>
-        </div>
+          <div class="resource-body"><strong>Datadog Free Trial</strong><p>14-day trial with full AIOps features. Best way to experience AI-driven monitoring hands-on.</p></div>
+        </a>
+        <a class="resource-card" href="https://grafana.com/products/cloud/" target="_blank">
+          <div class="resource-icon">📊</div>
+          <div class="resource-body"><strong>Grafana Cloud (Free)</strong><p>Free Prometheus + Grafana in the cloud. Best for learning monitoring and dashboarding.</p></div>
+        </a>
       </div>
     </section>
 
   </main>
 
   <footer>
-    <p>Last updated: <span id="last-updated">—</span> &nbsp;|&nbsp; Progress saved in your browser</p>
+    <p>Last updated: <span id="last-updated">—</span> &nbsp;|&nbsp; Progress saved in your browser &nbsp;|&nbsp; <a href="https://github.com/manujose05/networking-devops-ai" target="_blank">View source on GitHub</a></p>
   </footer>
 
   <script src="script.js"></script>
