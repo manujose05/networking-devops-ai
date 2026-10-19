@@ -103,25 +103,27 @@ function initCards() {
   const buttons = document.querySelectorAll('.expand-btn');
 
   buttons.forEach(btn => {
-    const card = btn.closest('.lesson');
-    const body = card.querySelector('.lesson-body');
+    const lesson = btn.closest('.lesson');
+    const body   = lesson.querySelector('.lesson-body');
+    const header = lesson.querySelector('.lesson-header');
 
-    btn.addEventListener('click', () => {
-      const isOpen = card.classList.contains('open');
-      if (isOpen) {
-        card.classList.remove('open');
-        body.classList.add('hidden');
-      } else {
-        card.classList.add('open');
-        body.classList.remove('hidden');
-      }
+    function toggle() {
+      const isOpen = lesson.classList.contains('open');
+      lesson.classList.toggle('open', !isOpen);
+      body.classList.toggle('hidden', isOpen);
+    }
+
+    // Stop propagation so the click doesn't also trigger the header listener
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      toggle();
     });
 
-    // Also expand on lesson header click (not on the checkbox area)
-    const header = card.querySelector('.lesson-header');
+    // Clicking anywhere else on the header (not checkbox, not button) also toggles
     header.addEventListener('click', e => {
       if (e.target.closest('.check-label')) return;
-      btn.click();
+      if (e.target.closest('.expand-btn')) return;
+      toggle();
     });
   });
 }
