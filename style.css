@@ -638,11 +638,6 @@ footer {
   width: 40px;
 }
 
-/* Allow vertical scroll when sidebar is open */
-.sidebar:not(.collapsed) {
-  overflow-y: auto;
-}
-
 /* Toggle button — sits on the right edge of the sidebar */
 .sidebar-toggle {
   position: absolute;
@@ -672,6 +667,7 @@ footer {
   overflow-y: auto;
   overflow-x: hidden;
   flex: 1;
+  min-height: 0;
   opacity: 1;
   transition: opacity 0.2s;
   padding-top: 50px;
