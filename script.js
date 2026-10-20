@@ -180,35 +180,42 @@ function initCheckboxes() {
 }
 
 // ============================================================
-// EXPAND / COLLAPSE CARDS
+// EXPAND / COLLAPSE LESSONS  (event delegation — single listener)
 // ============================================================
 
 function initCards() {
-  const buttons = document.querySelectorAll('.expand-btn');
+  document.addEventListener('click', function (e) {
 
-  buttons.forEach(btn => {
-    const lesson = btn.closest('.lesson');
-    const body   = lesson.querySelector('.lesson-body');
-    const header = lesson.querySelector('.lesson-header');
+    // ── clicked the ▼ button itself ──────────────────────────
+    const btn = e.target.closest('.expand-btn');
+    if (btn) {
+      const lesson = btn.closest('.lesson');
+      if (!lesson) return;
+      const body = lesson.querySelector('.lesson-body');
+      if (!body) return;
 
-    function toggle() {
-      const isOpen = lesson.classList.contains('open');
-      lesson.classList.toggle('open', !isOpen);
-      body.classList.toggle('hidden', isOpen);
+      const opening = body.classList.contains('hidden');
+      body.classList.toggle('hidden', !opening);
+      lesson.classList.toggle('open', opening);
+      btn.innerHTML = opening ? '▲' : '▼';
+      return;
     }
 
-    // Stop propagation so the click doesn't also trigger the header listener
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      toggle();
-    });
+    // ── clicked anywhere else on the header row ──────────────
+    const header = e.target.closest('.lesson-header');
+    if (!header) return;
+    if (e.target.closest('.check-label')) return;   // let checkbox work normally
 
-    // Clicking anywhere else on the header (not checkbox, not button) also toggles
-    header.addEventListener('click', e => {
-      if (e.target.closest('.check-label')) return;
-      if (e.target.closest('.expand-btn')) return;
-      toggle();
-    });
+    const lesson = header.closest('.lesson');
+    if (!lesson) return;
+    const body      = lesson.querySelector('.lesson-body');
+    const expandBtn = lesson.querySelector('.expand-btn');
+    if (!body) return;
+
+    const opening = body.classList.contains('hidden');
+    body.classList.toggle('hidden', !opening);
+    lesson.classList.toggle('open', opening);
+    if (expandBtn) expandBtn.innerHTML = opening ? '▲' : '▼';
   });
 }
 
