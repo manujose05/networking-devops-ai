@@ -624,7 +624,8 @@ footer {
   position: sticky;
   top: 0;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
   background: var(--bg2);
   border-right: 1px solid var(--border);
   transition: width 0.28s cubic-bezier(.4, 0, .2, 1);
@@ -635,6 +636,11 @@ footer {
 
 .sidebar.collapsed {
   width: 40px;
+}
+
+/* Allow vertical scroll when sidebar is open */
+.sidebar:not(.collapsed) {
+  overflow-y: auto;
 }
 
 /* Toggle button — sits on the right edge of the sidebar */
