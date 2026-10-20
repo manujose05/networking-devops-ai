@@ -31,7 +31,29 @@
     </div>
   </header>
 
-  <main>
+  <div class="page-wrap">
+
+    <!-- SIDEBAR: LEARNING HISTORY -->
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-toggle" id="sidebar-toggle" title="Toggle Learning History">&#8249;</button>
+      <div class="sidebar-inner">
+        <div class="sidebar-head">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm.75 7.75H5.5a.75.75 0 0 1 0-1.5h2.5V4a.75.75 0 0 1 1.5 0v4a.75.75 0 0 1-.75.75z" fill="#8b949e"/></svg>
+          <span>Learning History</span>
+        </div>
+        <div class="history-stats" id="history-stats">
+          <div class="hs-item"><span id="hs-done">0</span><small>Done</small></div>
+          <div class="hs-item"><span id="hs-total">0</span><small>Total</small></div>
+          <div class="hs-item"><span id="hs-pct">0%</span><small>Progress</small></div>
+        </div>
+        <div class="history-section-label">Completed topics</div>
+        <ul class="history-list" id="history-list">
+          <li class="history-empty">No topics completed yet.<br/>Check a topic above to track it here.</li>
+        </ul>
+      </div>
+    </aside>
+
+    <main>
 
     <!-- ROADMAP TIMELINE -->
     <section class="section">
@@ -1258,6 +1280,8 @@ LLM Bot:
     </section>
 
   </main>
+
+  </div><!-- /page-wrap -->
 
   <footer>
     <p>Last updated: <span id="last-updated">—</span> &nbsp;|&nbsp; Progress saved in your browser &nbsp;|&nbsp; <a href="https://github.com/manujose05/networking-devops-ai" target="_blank">View source on GitHub</a></p>

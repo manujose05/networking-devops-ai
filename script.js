@@ -2,15 +2,85 @@
 // TOPIC TRACKING — persisted in localStorage
 // ============================================================
 
-const STORAGE_KEY = 'ndai-progress';
+const STORAGE_KEY    = 'ndai-progress';
+const HISTORY_KEY    = 'ndai-history';
+const SIDEBAR_KEY    = 'ndai-sidebar';
 
 function loadProgress() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
   catch { return {}; }
 }
-
 function saveProgress(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+// ============================================================
+// HISTORY — record when each topic was completed
+// ============================================================
+
+function loadHistory() {
+  try { return JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; }
+  catch { return []; }
+}
+function saveHistory(data) {
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(data));
+}
+
+const PHASE_LABELS = { 1: 'Phase 1 · Networking', 2: 'Phase 2 · DevOps', 3: 'Phase 3 · AI' };
+
+function renderHistory() {
+  const list = document.getElementById('history-list');
+  if (!list) return;
+  const history = loadHistory();
+
+  if (history.length === 0) {
+    list.innerHTML = '<li class="history-empty">No topics completed yet.<br/>Check a topic above to track it here.</li>';
+    return;
+  }
+
+  // Most recent first
+  const sorted = [...history].sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt));
+  list.innerHTML = sorted.map(h => {
+    const d = new Date(h.completedAt);
+    const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    const timeStr = d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    return `
+      <li class="history-item">
+        <span class="hi-phase p${h.phase}">${PHASE_LABELS[h.phase] || 'Phase ' + h.phase}</span>
+        <span class="hi-title">${h.title}</span>
+        <span class="hi-date">${dateStr} · ${timeStr}</span>
+      </li>`;
+  }).join('');
+}
+
+function updateHistoryStats(totalDone, totalAll) {
+  const el = id => document.getElementById(id);
+  const pct = totalAll > 0 ? Math.round((totalDone / totalAll) * 100) : 0;
+  if (el('hs-done'))  el('hs-done').textContent  = totalDone;
+  if (el('hs-total')) el('hs-total').textContent = totalAll;
+  if (el('hs-pct'))   el('hs-pct').textContent   = pct + '%';
+}
+
+// ============================================================
+// SIDEBAR TOGGLE
+// ============================================================
+
+function initSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const btn     = document.getElementById('sidebar-toggle');
+  if (!sidebar || !btn) return;
+
+  // Restore saved state
+  if (localStorage.getItem(SIDEBAR_KEY) === 'collapsed') {
+    sidebar.classList.add('collapsed');
+  }
+
+  btn.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+    localStorage.setItem(SIDEBAR_KEY,
+      sidebar.classList.contains('collapsed') ? 'collapsed' : 'open'
+    );
+  });
 }
 
 // ============================================================
@@ -40,6 +110,7 @@ function updateStats() {
 
   document.getElementById('stat-done').textContent  = totalDone;
   document.getElementById('stat-total').textContent = totalAll;
+  updateHistoryStats(totalDone, totalAll);
 
   // Ring
   const overallPct = totalAll > 0 ? Math.round((totalDone / totalAll) * 100) : 0;
@@ -79,15 +150,28 @@ function initCheckboxes() {
 
     cb.addEventListener('change', () => {
       const data = loadProgress();
+      const title = cb.closest('.lesson').querySelector('.lesson-title').textContent;
+      const history = loadHistory();
+
       if (cb.checked) {
         data[topic] = true;
         phaseDone[phase]++;
+        // Add to history if not already there
+        if (!history.find(h => h.topic === topic)) {
+          history.push({ topic, phase, title, completedAt: new Date().toISOString() });
+        }
       } else {
         delete data[topic];
         phaseDone[phase]--;
+        // Remove from history
+        const idx = history.findIndex(h => h.topic === topic);
+        if (idx !== -1) history.splice(idx, 1);
       }
+
       saveProgress(data);
+      saveHistory(history);
       updateStats();
+      renderHistory();
       updateTimestamp();
     });
   });
@@ -167,7 +251,9 @@ window.updateTimestamp = function() { saveTimestamp(); };
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  initSidebar();
   initCards();
   initCheckboxes();
+  renderHistory();
   loadTimestamp();
 });

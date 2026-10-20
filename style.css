@@ -607,6 +607,182 @@ footer {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+/* ============================================================
+   PAGE LAYOUT — SIDEBAR + MAIN
+   ============================================================ */
+.page-wrap {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  transition: width 0.28s cubic-bezier(.4, 0, .2, 1);
+  display: flex;
+  flex-direction: column;
+  z-index: 90;
+}
+
+.sidebar.collapsed {
+  width: 40px;
+}
+
+/* Toggle button — sits on the right edge of the sidebar */
+.sidebar-toggle {
+  position: absolute;
+  top: 16px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s, color 0.15s, transform 0.28s;
+  z-index: 2;
+  flex-shrink: 0;
+}
+.sidebar-toggle:hover { background: var(--border); color: var(--text); }
+.sidebar.collapsed .sidebar-toggle { transform: rotate(180deg); right: 7px; }
+
+/* Inner scrollable content */
+.sidebar-inner {
+  padding: 14px 14px 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  opacity: 1;
+  transition: opacity 0.2s;
+  padding-top: 50px;
+}
+.sidebar.collapsed .sidebar-inner {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Sidebar heading */
+.sidebar-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+.sidebar-head span {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+/* Stats row */
+.history-stats {
+  display: flex;
+  gap: 0;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.hs-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px;
+  border-right: 1px solid var(--border);
+}
+.hs-item:last-child { border-right: none; }
+.hs-item span { font-size: 1.1rem; font-weight: 700; color: var(--phase1); line-height: 1.2; }
+.hs-item small { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-top: 1px; }
+
+/* Section label */
+.history-section-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+/* History list */
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.history-empty {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  padding: 10px 0 4px;
+  text-align: center;
+}
+
+.history-item {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition: background 0.15s;
+}
+.history-item:hover { background: var(--bg); }
+
+.hi-phase {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+.hi-phase.p1 { color: var(--phase1); }
+.hi-phase.p2 { color: var(--phase2); }
+.hi-phase.p3 { color: var(--phase3); }
+
+.hi-title {
+  font-size: 0.8rem;
+  color: var(--text-soft);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.hi-date {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+/* Adjust main when sidebar is open */
+main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 @media (max-width: 700px) {
   header { padding: 1.2rem 1rem 0; }
   .header-text h1 { font-size: 1.2rem; }
@@ -622,4 +798,6 @@ footer {
   .flow-step { padding-left: 2.8rem; }
   .flow-step::before { left: 7px; }
   .lesson-title { font-size: 0.88rem; white-space: normal; }
+  /* Sidebar hidden on mobile by default */
+  .sidebar { width: 40px; }
 }
