@@ -722,16 +722,79 @@ footer {
   margin-bottom: 8px;
 }
 
-/* History list */
-.history-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* ── Nav tree ─────────────────────────────────── */
+#sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 4px;
 }
 
+.nav-group {
+  margin-bottom: 4px;
+}
+
+.nav-group-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  padding: 6px 4px 4px;
+  margin-bottom: 2px;
+}
+.nav-group-label.nav-p1 { color: var(--phase1); }
+.nav-group-label.nav-p2 { color: var(--phase2); }
+.nav-group-label.nav-p3 { color: var(--phase3); }
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.3;
+  transition: background 0.15s, color 0.15s;
+  cursor: pointer;
+}
+.nav-item:hover {
+  background: var(--bg3);
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-item.nav-done {
+  color: var(--text-soft);
+}
+
+.nav-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+.nav-dot.nav-p1 { background: var(--phase1); }
+.nav-dot.nav-p2 { background: var(--phase2); }
+.nav-dot.nav-p3 { background: var(--phase3); }
+.nav-item.nav-done .nav-dot { opacity: 1; }
+
+.nav-item-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nav-tick {
+  font-size: 0.7rem;
+  color: var(--phase2);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ── Old history list (kept for compat) ───────── */
 .history-empty {
   font-size: 0.8rem;
   color: var(--text-muted);
@@ -748,31 +811,14 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  transition: background 0.15s;
 }
-.history-item:hover { background: var(--bg); }
 
-.hi-phase {
-  font-size: 0.62rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-}
+.hi-phase { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
 .hi-phase.p1 { color: var(--phase1); }
 .hi-phase.p2 { color: var(--phase2); }
 .hi-phase.p3 { color: var(--phase3); }
-
-.hi-title {
-  font-size: 0.8rem;
-  color: var(--text-soft);
-  line-height: 1.4;
-  font-weight: 500;
-}
-
-.hi-date {
-  font-size: 0.68rem;
-  color: var(--text-muted);
-}
+.hi-title { font-size: 0.8rem; color: var(--text-soft); line-height: 1.4; font-weight: 500; }
+.hi-date  { font-size: 0.68rem; color: var(--text-muted); }
 
 /* Adjust main when sidebar is open */
 main {

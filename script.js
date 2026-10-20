@@ -26,31 +26,59 @@ function saveHistory(data) {
   localStorage.setItem(HISTORY_KEY, JSON.stringify(data));
 }
 
-const PHASE_LABELS = { 1: 'Phase 1 · Networking', 2: 'Phase 2 · DevOps', 3: 'Phase 3 · AI' };
+const PHASE_COLORS = { 1: 'p1', 2: 'p2', 3: 'p3' };
 
-function renderHistory() {
-  const list = document.getElementById('history-list');
-  if (!list) return;
-  const history = loadHistory();
+// Build the sidebar navigation tree from DOM lessons
+function buildNav() {
+  const nav = document.getElementById('sidebar-nav');
+  if (!nav) return;
 
-  if (history.length === 0) {
-    list.innerHTML = '<li class="history-empty">No topics completed yet.<br/>Check a topic above to track it here.</li>';
-    return;
-  }
+  const phases = document.querySelectorAll('.phase-section');
+  let html = '';
 
-  // Most recent first
-  const sorted = [...history].sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt));
-  list.innerHTML = sorted.map(h => {
-    const d = new Date(h.completedAt);
-    const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    const timeStr = d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-    return `
-      <li class="history-item">
-        <span class="hi-phase p${h.phase}">${PHASE_LABELS[h.phase] || 'Phase ' + h.phase}</span>
-        <span class="hi-title">${h.title}</span>
-        <span class="hi-date">${dateStr} · ${timeStr}</span>
-      </li>`;
-  }).join('');
+  phases.forEach(phase => {
+    const phaseNum = parseInt(phase.id.replace('phase-', ''), 10);
+    const phaseTitle = phase.querySelector('.phase-header h2').textContent.trim();
+    const lessons = phase.querySelectorAll('.lesson');
+
+    html += `<div class="nav-group">
+      <div class="nav-group-label nav-p${phaseNum}">${phaseTitle}</div>`;
+
+    lessons.forEach(lesson => {
+      const cb    = lesson.querySelector('.topic-check');
+      const title = lesson.querySelector('.lesson-title').textContent.trim();
+      const done  = cb && cb.checked;
+      html += `<a class="nav-item${done ? ' nav-done' : ''}"
+                  href="#${lesson.id}"
+                  data-target="${lesson.id}">
+        <span class="nav-dot nav-p${phaseNum}"></span>
+        <span class="nav-item-title">${title}</span>
+        ${done ? '<span class="nav-tick">✓</span>' : ''}
+      </a>`;
+    });
+
+    html += '</div>';
+  });
+
+  nav.innerHTML = html;
+
+  // Click: open the lesson + smooth scroll to it
+  nav.querySelectorAll('.nav-item').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.getElementById(a.dataset.target);
+      if (!target) return;
+
+      const body = target.querySelector('.lesson-body');
+      const btn  = target.querySelector('.expand-btn');
+      if (body && body.classList.contains('hidden')) {
+        body.classList.remove('hidden');
+        target.classList.add('open');
+        if (btn) btn.innerHTML = '▲';
+      }
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 }
 
 function updateHistoryStats(totalDone, totalAll) {
@@ -171,7 +199,7 @@ function initCheckboxes() {
       saveProgress(data);
       saveHistory(history);
       updateStats();
-      renderHistory();
+      buildNav();
       updateTimestamp();
     });
   });
@@ -261,6 +289,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initSidebar();
   initCards();
   initCheckboxes();
-  renderHistory();
+  buildNav();
   loadTimestamp();
 });
