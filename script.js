@@ -4,7 +4,6 @@
 
 const STORAGE_KEY    = 'ndai-progress';
 const HISTORY_KEY    = 'ndai-history';
-const SIDEBAR_KEY    = 'ndai-sidebar';
 
 function loadProgress() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
@@ -27,89 +26,6 @@ function saveHistory(data) {
 }
 
 const PHASE_COLORS = { 1: 'p1', 2: 'p2', 3: 'p3' };
-
-// Build the sidebar navigation tree from DOM lessons
-function buildNav() {
-  const nav = document.getElementById('sidebar-nav');
-  if (!nav) return;
-
-  const phases = document.querySelectorAll('.phase-section');
-  let html = '';
-
-  phases.forEach(phase => {
-    const phaseNum = parseInt(phase.id.replace('phase-', ''), 10);
-    const phaseTitle = phase.querySelector('.phase-header h2').textContent.trim();
-    const lessons = phase.querySelectorAll('.lesson');
-
-    html += `<div class="nav-group">
-      <div class="nav-group-label nav-p${phaseNum}">${phaseTitle}</div>`;
-
-    lessons.forEach(lesson => {
-      const cb    = lesson.querySelector('.topic-check');
-      const title = lesson.querySelector('.lesson-title').textContent.trim();
-      const done  = cb && cb.checked;
-      html += `<a class="nav-item${done ? ' nav-done' : ''}"
-                  href="#${lesson.id}"
-                  data-target="${lesson.id}">
-        <span class="nav-dot nav-p${phaseNum}"></span>
-        <span class="nav-item-title">${title}</span>
-        ${done ? '<span class="nav-tick">✓</span>' : ''}
-      </a>`;
-    });
-
-    html += '</div>';
-  });
-
-  nav.innerHTML = html;
-
-  // Click: open the lesson + smooth scroll to it
-  nav.querySelectorAll('.nav-item').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      const target = document.getElementById(a.dataset.target);
-      if (!target) return;
-
-      const body = target.querySelector('.lesson-body');
-      const btn  = target.querySelector('.expand-btn');
-      if (body && body.classList.contains('hidden')) {
-        body.classList.remove('hidden');
-        target.classList.add('open');
-        if (btn) btn.innerHTML = '▲';
-      }
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-}
-
-function updateHistoryStats(totalDone, totalAll) {
-  const el = id => document.getElementById(id);
-  const pct = totalAll > 0 ? Math.round((totalDone / totalAll) * 100) : 0;
-  if (el('hs-done'))  el('hs-done').textContent  = totalDone;
-  if (el('hs-total')) el('hs-total').textContent = totalAll;
-  if (el('hs-pct'))   el('hs-pct').textContent   = pct + '%';
-}
-
-// ============================================================
-// SIDEBAR TOGGLE
-// ============================================================
-
-function initSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  const btn     = document.getElementById('sidebar-toggle');
-  if (!sidebar || !btn) return;
-
-  // Restore saved state
-  if (localStorage.getItem(SIDEBAR_KEY) === 'collapsed') {
-    sidebar.classList.add('collapsed');
-  }
-
-  btn.addEventListener('click', () => {
-    sidebar.classList.toggle('collapsed');
-    localStorage.setItem(SIDEBAR_KEY,
-      sidebar.classList.contains('collapsed') ? 'collapsed' : 'open'
-    );
-  });
-}
 
 // ============================================================
 // PHASE COUNTERS
@@ -138,7 +54,6 @@ function updateStats() {
 
   document.getElementById('stat-done').textContent  = totalDone;
   document.getElementById('stat-total').textContent = totalAll;
-  updateHistoryStats(totalDone, totalAll);
 
   // Ring
   const overallPct = totalAll > 0 ? Math.round((totalDone / totalAll) * 100) : 0;
@@ -184,14 +99,12 @@ function initCheckboxes() {
       if (cb.checked) {
         data[topic] = true;
         phaseDone[phase]++;
-        // Add to history if not already there
         if (!history.find(h => h.topic === topic)) {
           history.push({ topic, phase, title, completedAt: new Date().toISOString() });
         }
       } else {
         delete data[topic];
         phaseDone[phase]--;
-        // Remove from history
         const idx = history.findIndex(h => h.topic === topic);
         if (idx !== -1) history.splice(idx, 1);
       }
@@ -199,7 +112,6 @@ function initCheckboxes() {
       saveProgress(data);
       saveHistory(history);
       updateStats();
-      buildNav();
       updateTimestamp();
     });
   });
@@ -286,9 +198,7 @@ window.updateTimestamp = function() { saveTimestamp(); };
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  initSidebar();
   initCards();
   initCheckboxes();
-  buildNav();
   loadTimestamp();
 });
