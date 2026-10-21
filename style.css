@@ -668,7 +668,7 @@ footer {
   left: 0;
   right: 0;
   bottom: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   padding: 14px 14px 20px;
   opacity: 1;
@@ -731,6 +731,9 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  max-height: 50vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .nav-group {
