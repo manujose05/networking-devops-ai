@@ -663,14 +663,16 @@ footer {
 
 /* Inner scrollable content */
 .sidebar-inner {
-  padding: 14px 14px 20px;
+  position: absolute;
+  top: 46px;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  flex: 1;
-  min-height: 0;
+  padding: 14px 14px 20px;
   opacity: 1;
   transition: opacity 0.2s;
-  padding-top: 50px;
 }
 .sidebar.collapsed .sidebar-inner {
   opacity: 0;
