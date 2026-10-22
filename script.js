@@ -4,6 +4,7 @@
 
 const STORAGE_KEY    = 'ndai-progress';
 const HISTORY_KEY    = 'ndai-history';
+const SIDEBAR_KEY    = 'ndai-sidebar';
 
 function loadProgress() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
@@ -25,7 +26,36 @@ function saveHistory(data) {
   localStorage.setItem(HISTORY_KEY, JSON.stringify(data));
 }
 
-const PHASE_COLORS = { 1: 'p1', 2: 'p2', 3: 'p3' };
+const PHASE_LABELS = { 1: 'Phase 1 · Networking', 2: 'Phase 2 · DevOps', 3: 'Phase 3 · AI' };
+
+function renderHistory() {
+  const list = document.getElementById('history-list');
+  if (!list) return;
+  const history = loadHistory();
+  if (history.length === 0) {
+    list.innerHTML = '<li class="history-empty">No topics completed yet.<br/>Check a topic above to track it here.</li>';
+    return;
+  }
+  const sorted = [...history].sort((a, b) => new Date(b.completedAt) - new Date(a.completedAt));
+  list.innerHTML = sorted.map(h => {
+    const d = new Date(h.completedAt);
+    const dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    const timeStr = d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    return `<li class="history-item">
+      <span class="hi-phase p${h.phase}">${PHASE_LABELS[h.phase] || 'Phase ' + h.phase}</span>
+      <span class="hi-title">${h.title}</span>
+      <span class="hi-date">${dateStr} · ${timeStr}</span>
+    </li>`;
+  }).join('');
+}
+
+function updateHistoryStats(totalDone, totalAll) {
+  const pct = totalAll > 0 ? Math.round((totalDone / totalAll) * 100) : 0;
+  const el = id => document.getElementById(id);
+  if (el('hs-done'))  el('hs-done').textContent  = totalDone;
+  if (el('hs-total')) el('hs-total').textContent = totalAll;
+  if (el('hs-pct'))   el('hs-pct').textContent   = pct + '%';
+}
 
 // ============================================================
 // PHASE COUNTERS
@@ -41,11 +71,7 @@ function updateStats() {
   [1, 2, 3].forEach(p => {
     totalDone += phaseDone[p];
     totalAll  += phaseTotals[p];
-
-    const pct = phaseTotals[p] > 0
-      ? Math.round((phaseDone[p] / phaseTotals[p]) * 100)
-      : 0;
-
+    const pct = phaseTotals[p] > 0 ? Math.round((phaseDone[p] / phaseTotals[p]) * 100) : 0;
     const bar = document.getElementById(`prog-${p}`);
     const label = document.getElementById(`pct-${p}`);
     if (bar)   bar.style.width = pct + '%';
@@ -54,22 +80,18 @@ function updateStats() {
 
   document.getElementById('stat-done').textContent  = totalDone;
   document.getElementById('stat-total').textContent = totalAll;
+  updateHistoryStats(totalDone, totalAll);
 
-  // Ring
   const overallPct = totalAll > 0 ? Math.round((totalDone / totalAll) * 100) : 0;
-  const circumference = 2 * Math.PI * 34; // r=34
+  const circumference = 2 * Math.PI * 34;
   const offset = circumference - (overallPct / 100) * circumference;
   const ring = document.getElementById('ring-fill');
-  if (ring) ring.style.strokeDashoffset = offset;
+  if (ring) {
+    ring.style.strokeDashoffset = offset;
+    ring.style.stroke = overallPct < 33 ? '#58a6ff' : overallPct < 66 ? '#3fb950' : '#d2a8ff';
+  }
   const ringLabel = document.getElementById('ring-label');
   if (ringLabel) ringLabel.textContent = overallPct + '%';
-
-  // Change ring color based on progress
-  if (ring) {
-    if (overallPct < 33)       ring.style.stroke = '#58a6ff';
-    else if (overallPct < 66)  ring.style.stroke = '#3fb950';
-    else                       ring.style.stroke = '#d2a8ff';
-  }
 }
 
 // ============================================================
@@ -92,9 +114,9 @@ function initCheckboxes() {
     }
 
     cb.addEventListener('change', () => {
-      const data = loadProgress();
-      const title = cb.closest('.lesson').querySelector('.lesson-title').textContent;
+      const data    = loadProgress();
       const history = loadHistory();
+      const title   = cb.closest('.lesson').querySelector('.lesson-title').textContent;
 
       if (cb.checked) {
         data[topic] = true;
@@ -112,6 +134,7 @@ function initCheckboxes() {
       saveProgress(data);
       saveHistory(history);
       updateStats();
+      renderHistory();
       updateTimestamp();
     });
   });
@@ -120,42 +143,77 @@ function initCheckboxes() {
 }
 
 // ============================================================
-// EXPAND / COLLAPSE LESSONS  (event delegation — single listener)
+// EXPAND / COLLAPSE LESSONS  (event delegation)
 // ============================================================
 
 function initCards() {
   document.addEventListener('click', function (e) {
-
-    // ── clicked the ▼ button itself ──────────────────────────
-    const btn = e.target.closest('.expand-btn');
-    if (btn) {
-      const lesson = btn.closest('.lesson');
-      if (!lesson) return;
-      const body = lesson.querySelector('.lesson-body');
-      if (!body) return;
-
-      const opening = body.classList.contains('hidden');
-      body.classList.toggle('hidden', !opening);
-      lesson.classList.toggle('open', opening);
-      btn.innerHTML = opening ? '▲' : '▼';
-      return;
-    }
-
-    // ── clicked anywhere else on the header row ──────────────
     const header = e.target.closest('.lesson-header');
     if (!header) return;
-    if (e.target.closest('.check-label')) return;   // let checkbox work normally
+    if (e.target.closest('.check-label')) return;
 
     const lesson = header.closest('.lesson');
     if (!lesson) return;
-    const body      = lesson.querySelector('.lesson-body');
-    const expandBtn = lesson.querySelector('.expand-btn');
+    const body = lesson.querySelector('.lesson-body');
     if (!body) return;
 
     const opening = body.classList.contains('hidden');
     body.classList.toggle('hidden', !opening);
     lesson.classList.toggle('open', opening);
-    if (expandBtn) expandBtn.innerHTML = opening ? '▲' : '▼';
+  });
+}
+
+// ============================================================
+// PHASE COLLAPSE / EXPAND
+// ============================================================
+
+function initPhaseToggles() {
+  document.querySelectorAll('.phase-header').forEach(header => {
+    const section = header.closest('.phase-section');
+    const lessons = header.nextElementSibling;
+    if (!section || !lessons) return;
+
+    const key = 'phase-collapsed-' + section.id;
+
+    const btn = document.createElement('button');
+    btn.className = 'phase-toggle-btn';
+    btn.innerHTML = '▼';
+    btn.title = 'Collapse / expand phase';
+    header.appendChild(btn);
+
+    if (localStorage.getItem(key) === '1') {
+      lessons.classList.add('phase-collapsed');
+      btn.classList.add('collapsed');
+    }
+
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const isCollapsed = lessons.classList.contains('phase-collapsed');
+      lessons.classList.toggle('phase-collapsed', !isCollapsed);
+      btn.classList.toggle('collapsed', !isCollapsed);
+      localStorage.setItem(key, isCollapsed ? '0' : '1');
+    });
+  });
+}
+
+// ============================================================
+// SIDEBAR TOGGLE
+// ============================================================
+
+function initSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  const btn     = document.getElementById('sidebar-toggle');
+  if (!sidebar || !btn) return;
+
+  if (localStorage.getItem(SIDEBAR_KEY) === 'collapsed') {
+    sidebar.classList.add('collapsed');
+  }
+
+  btn.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+    localStorage.setItem(SIDEBAR_KEY,
+      sidebar.classList.contains('collapsed') ? 'collapsed' : 'open'
+    );
   });
 }
 
@@ -165,12 +223,8 @@ function initCards() {
 
 function updateTimestamp() {
   const el = document.getElementById('last-updated');
-  if (el) {
-    el.textContent = new Date().toLocaleDateString('en-US', {
-      year: 'numeric', month: 'short', day: 'numeric',
-      hour: '2-digit', minute: '2-digit'
-    });
-  }
+  if (el) el.textContent = new Date().toLocaleDateString('en-US',
+    { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
 }
 
 function loadTimestamp() {
@@ -180,17 +234,13 @@ function loadTimestamp() {
 }
 
 function saveTimestamp() {
-  const ts = new Date().toLocaleDateString('en-US', {
-    year: 'numeric', month: 'short', day: 'numeric',
-    hour: '2-digit', minute: '2-digit'
-  });
+  const ts = new Date().toLocaleDateString('en-US',
+    { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
   localStorage.setItem('ndai-last-updated', ts);
   const el = document.getElementById('last-updated');
   if (el) el.textContent = ts;
 }
 
-// Override updateTimestamp to also save
-const _origUpdate = updateTimestamp;
 window.updateTimestamp = function() { saveTimestamp(); };
 
 // ============================================================
@@ -198,7 +248,11 @@ window.updateTimestamp = function() { saveTimestamp(); };
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  initSidebar();
+  initPhaseToggles();
   initCards();
   initCheckboxes();
+  renderHistory();
   loadTimestamp();
 });
+
